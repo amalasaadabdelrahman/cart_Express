@@ -1,5 +1,6 @@
 import 'package:cart_express/Secreens/choose_city.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -53,7 +54,7 @@ class _SplashState extends State<Splash> {
                     ),
                   ),
                   SizedBox(
-                    height: 13,
+                    height: 13.h,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -77,8 +78,8 @@ class _SplashState extends State<Splash> {
             child: Image.asset('images/images/path_16.png'),
           ),
           Container(
-            width: double.infinity,
-            height: 251,
+            width: double.infinity.w,
+            height: 251.h,
             child: Transform.translate(
               offset: Offset(0, 565),
               child: Image.asset(

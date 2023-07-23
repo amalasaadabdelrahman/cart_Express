@@ -6,6 +6,7 @@ import '../Secreens/home.dart';
 import '../Secreens/offers.dart';
 import '../Secreens/profile.dart';
 import '../constants/const.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ButtomNavigationBar extends StatefulWidget {
   // ButtomNavigationBar({});

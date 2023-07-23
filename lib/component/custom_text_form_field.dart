@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({Key? key, required this.textFormField})
@@ -12,8 +13,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
-      height: 65,
+      width: 300.w,
+      height: 65.h,
       child: widget.textFormField,
       decoration: BoxDecoration(
         border: Border.all(

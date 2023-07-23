@@ -1,6 +1,7 @@
 import 'package:cart_express/component/custom_button.dart';
 import 'package:cart_express/constants/const.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -97,14 +98,14 @@ class _HomeState extends State<Home> {
           child: Padding(
             padding: const EdgeInsets.only(top: 27),
             child: Container(
-              width: double.infinity,
-              height: double.infinity,
+              width: double.infinity.w,
+              height: double.infinity.h,
               margin: EdgeInsets.only(top: 5),
               child: Column(
                 children: [
                   SizedBox(
-                    width: double.infinity,
-                    height: 60,
+                    width: double.infinity.w,
+                    height: 60.h,
                     child: ListView.builder(
                         physics: BouncingScrollPhysics(),
                         itemCount: items.length,
@@ -154,7 +155,7 @@ class _HomeState extends State<Home> {
                   current == 0
                       ? Expanded(
                           child: Container(
-                            width: double.infinity,
+                            width: double.infinity.w,
                             margin: EdgeInsets.only(top: 25),
                             decoration: BoxDecoration(
                               color: Colors.transparent,
@@ -198,8 +199,8 @@ class _HomeState extends State<Home> {
                                       ),
                                       Container(
                                         clipBehavior: Clip.antiAlias,
-                                        width: 150,
-                                        height: 40,
+                                        width: 150.w,
+                                        height: 40.h,
                                         margin: EdgeInsets.only(
                                           top: 40,
                                         ),
@@ -240,7 +241,7 @@ class _HomeState extends State<Home> {
                   current == 1
                       ? Expanded(
                           child: Container(
-                            width: double.infinity,
+                            width: double.infinity.w,
                             margin: EdgeInsets.only(top: 25),
                             decoration: BoxDecoration(
                               color: Colors.transparent,
@@ -250,7 +251,7 @@ class _HomeState extends State<Home> {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                childAspectRatio: 160 / 200,
+                                childAspectRatio: 160.h / 200.w,
                               ),
                               itemBuilder: (context, index) {
                                 return Container(
@@ -284,8 +285,8 @@ class _HomeState extends State<Home> {
                                       ),
                                       Container(
                                         clipBehavior: Clip.antiAlias,
-                                        width: 150,
-                                        height: 40,
+                                        width: 150.w,
+                                        height: 40.h,
                                         margin: EdgeInsets.only(
                                           top: 40,
                                         ),
@@ -326,7 +327,7 @@ class _HomeState extends State<Home> {
                   current == 2
                       ? Expanded(
                           child: Container(
-                            width: double.infinity,
+                            width: double.infinity.w,
                             margin: EdgeInsets.only(top: 25),
                             decoration: BoxDecoration(
                               color: Colors.transparent,
@@ -336,7 +337,7 @@ class _HomeState extends State<Home> {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                childAspectRatio: 160 / 200,
+                                childAspectRatio: 160.h / 200.w,
                               ),
                               itemBuilder: (context, index) {
                                 return Container(
@@ -370,8 +371,8 @@ class _HomeState extends State<Home> {
                                       ),
                                       Container(
                                         clipBehavior: Clip.antiAlias,
-                                        width: 150,
-                                        height: 40,
+                                        width: 150.w,
+                                        height: 40.h,
                                         margin: EdgeInsets.only(
                                           top: 40,
                                         ),
@@ -412,7 +413,7 @@ class _HomeState extends State<Home> {
                   current == 3
                       ? Expanded(
                           child: Container(
-                            width: double.infinity,
+                            width: double.infinity.w,
                             margin: EdgeInsets.only(top: 25),
                             decoration: BoxDecoration(
                               color: Colors.transparent,
@@ -422,7 +423,7 @@ class _HomeState extends State<Home> {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                childAspectRatio: 160 / 200,
+                                childAspectRatio: 160.h / 200.w,
                               ),
                               itemBuilder: (context, index) {
                                 return Container(
@@ -456,8 +457,8 @@ class _HomeState extends State<Home> {
                                       ),
                                       Container(
                                         clipBehavior: Clip.antiAlias,
-                                        width: 150,
-                                        height: 40,
+                                        width: 150.w,
+                                        height: 40.h,
                                         margin: EdgeInsets.only(
                                           top: 40,
                                         ),

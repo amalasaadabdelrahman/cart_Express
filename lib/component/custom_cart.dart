@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCart extends StatefulWidget {
   const CustomCart({Key? key}) : super(key: key);
@@ -14,91 +15,114 @@ class _CustomCartState extends State<CustomCart> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-        width: double.infinity,
-        height: 100,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(24),
-                bottomLeft: Radius.circular(24),
-                bottomRight: Radius.circular(24))),
-        child: ListTile(
-          leading: Image(
-            image: AssetImage('images/images/apple.png'),
-          ),
-          title: Text('Apple'),
-          subtitle: Text(
-            '${5.00}\$/K',
-            style: TextStyle(
-                color: Color(0XFF1ABCBC),
-                fontSize: 18,
-                fontWeight: FontWeight.w500),
-          ),
-          trailing: Column(
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.close,
-                  color: Color(0XFFFC3346),
+          width: double.infinity.w,
+          height: 100.h,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(24),
+                  bottomLeft: Radius.circular(24),
+                  bottomRight: Radius.circular(24))),
+          child: Expanded(
+            child: Row(
+              children: [
+                Image(
+                  image: AssetImage('images/images/apple.png'),
                 ),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        color: Color(0XFF1ABCBC),
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(12),
-                            topLeft: Radius.circular(3),
-                            bottomRight: Radius.circular(3),
-                            bottomLeft: Radius.circular(12))),
-                    child: IconButton(
-                      onPressed: () {
-                        count != 0 ? count-- : count;
-                      },
-                      icon: Icon(
-                        Icons.minimize,
-                        color: Colors.white,
+                SizedBox(
+                  width: 30.w,
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30.0),
+                      child: Text(
+                        'Apple',
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('${05}'),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        color: Color(0XFF1ABCBC),
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(12),
-                            topLeft: Radius.circular(3),
-                            bottomRight: Radius.circular(3),
-                            bottomLeft: Radius.circular(12))),
-                    child: IconButton(
-                      onPressed: () {
-                        count++;
-                      },
+                    Text(
+                      '${5.00} \$/K',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0XFF1ABCBC)),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 75.w,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
                       icon: Icon(
-                        Icons.add,
-                        color: Colors.white,
+                        Icons.close,
+                        color: Colors.red,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+                    Row(
+                      children: [
+                        Container(
+                            width: 40.w,
+                            height: 40.h,
+                            decoration: BoxDecoration(
+                                color: Color(0XFF1ABCBC),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(3),
+                                    topRight: Radius.circular(12),
+                                    bottomLeft: Radius.circular(3),
+                                    bottomRight: Radius.circular(3))),
+                            child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  count != 0 ? count-- : count;
+                                });
+                              },
+                              icon: Icon(
+                                Icons.minimize,
+                                color: Colors.white,
+                              ),
+                            )),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Text(
+                          '${count}',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Container(
+                            width: 40.w,
+                            height: 40.h,
+                            decoration: BoxDecoration(
+                                color: Color(0XFF1ABCBC),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(3),
+                                    topRight: Radius.circular(12),
+                                    bottomLeft: Radius.circular(3),
+                                    bottomRight: Radius.circular(3))),
+                            child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  count++;
+                                });
+                              },
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            )),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )),
     );
   }
 }

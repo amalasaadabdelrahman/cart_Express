@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../component/custom_button.dart';
 import '../component/custom_text_form_field.dart';
 import 'home.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
@@ -54,8 +55,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             color: Color(0XFF1ABCBC),
           ),
           Container(
-            width: double.infinity,
-            height: 300,
+            width: double.infinity.w,
+            height: 300.h,
             child: Transform.translate(
               offset: Offset(0, -10),
               child: Image.asset(
@@ -75,8 +76,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               key: _formKey,
               child: Container(
                 clipBehavior: Clip.antiAlias,
-                width: 380,
-                height: 450,
+                width: 380.w,
+                height: 450.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   boxShadow: [
@@ -94,21 +95,21 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 40,
+                          height: 40.h,
                         ),
                         Image.asset(
                           'images/images/logo.png',
                           color: Color(0XFF1ABCBC),
                         ),
                         SizedBox(
-                          height: 28,
+                          height: 28.h,
                         ),
                         Text(
                           'Forget Password',
                           style: TextStyle(fontSize: 18),
                         ),
                         SizedBox(
-                          height: 50,
+                          height: 50.h,
                         ),
                         CustomTextFormField(
                           textFormField: TextFormField(

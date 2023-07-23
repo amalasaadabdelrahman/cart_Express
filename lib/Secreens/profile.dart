@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../component/custom_button.dart';
 import '../component/custom_text_form_field.dart';
 import 'editprofile.dart';
@@ -25,8 +25,8 @@ class _ProfileState extends State<Profile> {
         child: Stack(
           children: [
             Container(
-              width: double.infinity,
-              height: 300,
+              width: double.infinity.w,
+              height: 300.h,
               child: Transform.translate(
                 offset: Offset(0, -10),
                 child: Image.asset(
@@ -77,10 +77,10 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 SizedBox(
-                  height: 29,
+                  height: 29.h,
                 ),
                 Container(
-                  width: 400,
+                  width: 400.w,
                   padding: EdgeInsets.all(5),
                   margin: EdgeInsets.all(15),
                   child: ListTile(
@@ -109,7 +109,7 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 Container(
-                  width: 400,
+                  width: 400.w,
                   padding: EdgeInsets.all(5),
                   margin: EdgeInsets.all(15),
                   child: ListTile(

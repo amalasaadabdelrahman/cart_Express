@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../models/cities.dart';
@@ -78,14 +78,14 @@ class _CitiesState extends State<Cities> {
                   side: BorderSide(
                     color: Color(
                         0XFF1ABCBC), // Set the border color of the ListTile
-                    width: 2.0, // Set the border width of the ListTile
+                    width: 2.0.w, // Set the border width of the ListTile
                   ),
                 ),
               );
             },
             separatorBuilder: (context, index) {
               return SizedBox(
-                height: 18,
+                height: 18.h,
               );
             },
             itemCount: cities.length),

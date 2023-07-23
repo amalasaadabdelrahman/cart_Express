@@ -1,6 +1,6 @@
 import 'package:cart_express/Secreens/login_secreen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../component/bottom_navigation_bar.dart';
 import '../component/custom_button.dart';
 import '../component/custom_text_form_field.dart';
@@ -66,8 +66,8 @@ class _SingUpScreenState extends State<SingUpScreen> {
             alignment: Alignment.centerLeft,
             children: [
               Container(
-                width: double.infinity,
-                height: 300,
+                width: double.infinity.w,
+                height: 300.h,
                 child: Transform.translate(
                   offset: Offset(0, -10),
                   child: Image.asset(
@@ -98,7 +98,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
             child: Form(
               key: _formKey,
               child: Container(
-                width: 380,
+                width: 380.w,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
@@ -117,14 +117,14 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 40,
+                          height: 40.h,
                         ),
                         Image.asset(
                           'images/images/logo.png',
                           color: Color(0XFF1ABCBC),
                         ),
                         SizedBox(
-                          height: 45,
+                          height: 45.h,
                         ),
                         CustomTextFormField(
                           textFormField: TextFormField(
@@ -156,7 +156,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 20.h,
                         ),
                         CustomTextFormField(
                           textFormField: TextFormField(
@@ -189,7 +189,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 20.h,
                         ),
                         CustomTextFormField(
                           textFormField: TextFormField(
@@ -227,7 +227,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 20.h,
                         ),
                         CustomTextFormField(
                           textFormField: TextFormField(
@@ -288,7 +288,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                               validator();
                             }),
                         SizedBox(
-                          height: 50,
+                          height: 50.h,
                         )
                       ],
                     ),

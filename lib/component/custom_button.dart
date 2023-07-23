@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Custom_Button extends StatefulWidget {
   const Custom_Button({Key? key, required this.text, required this.onpressed})
@@ -15,8 +16,8 @@ class _Custom_ButtonState extends State<Custom_Button> {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
-      width: 180,
-      height: 50,
+      width: 180.w,
+      height: 50.h,
       margin: EdgeInsets.only(
         top: 40,
       ),

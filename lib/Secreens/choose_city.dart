@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../component/custom_button.dart';
 import 'citities.dart';
 import 'on_boarding.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChooseCity extends StatefulWidget {
   const ChooseCity({Key? key}) : super(key: key);
@@ -18,8 +19,8 @@ class _ChooseCityState extends State<ChooseCity> {
       body: Stack(
         children: [
           Container(
-            width: double.infinity,
-            height: 380,
+            width: double.infinity.w,
+            height: 380.h,
             child: Transform.translate(
               offset: const Offset(0, -110),
               child: Image.asset(
@@ -36,7 +37,7 @@ class _ChooseCityState extends State<ChooseCity> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 300,
+                height: 300.h,
               ),
               Center(
                 child: Image.asset(
@@ -45,19 +46,19 @@ class _ChooseCityState extends State<ChooseCity> {
                 ),
               ),
               SizedBox(
-                height: 18,
+                height: 18.h,
               ),
               Text(
                 'Choose the city',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 20.h,
                   fontFamily: "Roboto",
                   color: Color(0XFF707070),
                   fontWeight: FontWeight.w500,
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 10.h,
               ),
               Text(
                 'it is long established that a reader will',
@@ -68,12 +69,12 @@ class _ChooseCityState extends State<ChooseCity> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 50.h,
               ),
               Container(
                 padding: EdgeInsets.only(left: 20),
-                width: 300,
-                height: 50,
+                width: 300.w,
+                height: 50.h,
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0XFF1ABCBC)),
                   borderRadius: BorderRadiusDirectional.only(
@@ -89,7 +90,7 @@ class _ChooseCityState extends State<ChooseCity> {
                       color: Color(0XFF1ABCBC),
                     ),
                     SizedBox(
-                      width: 12,
+                      width: 12.w,
                     ),
                     Text(
                       'City',
@@ -99,7 +100,7 @@ class _ChooseCityState extends State<ChooseCity> {
                       ),
                     ),
                     SizedBox(
-                      width: 140,
+                      width: 140.w,
                     ),
                     IconButton(
                       onPressed: () {

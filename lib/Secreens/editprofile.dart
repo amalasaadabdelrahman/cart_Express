@@ -2,6 +2,7 @@ import 'package:cart_express/Secreens/profile.dart';
 import 'package:flutter/material.dart';
 import '../component/custom_button.dart';
 import '../component/custom_text_form_field.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
@@ -51,8 +52,8 @@ class _EditProfileState extends State<EditProfile> {
             Stack(
               children: [
                 Container(
-                  width: double.infinity,
-                  height: 300,
+                  width: double.infinity.w,
+                  height: 300.h,
                   child: Transform.translate(
                     offset: Offset(0, -10),
                     child: Image.asset(
@@ -113,7 +114,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 50.h,
                 ),
               ],
             ),
@@ -121,7 +122,7 @@ class _EditProfileState extends State<EditProfile> {
               key: _formKey,
               child: Expanded(
                 child: Container(
-                  width: 500,
+                  width: 500.w,
                   margin:
                       EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 5),
                   decoration: BoxDecoration(
@@ -144,7 +145,7 @@ class _EditProfileState extends State<EditProfile> {
                               ),
                             ),
                             SizedBox(
-                              height: 30,
+                              height: 30.h,
                             ),
                             CustomTextFormField(
                               textFormField: TextFormField(
@@ -175,7 +176,7 @@ class _EditProfileState extends State<EditProfile> {
                               ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 20.h,
                             ),
                             CustomTextFormField(
                               textFormField: TextFormField(
@@ -209,7 +210,7 @@ class _EditProfileState extends State<EditProfile> {
                               ),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 20.h,
                             ),
                             CustomTextFormField(
                               textFormField: TextFormField(

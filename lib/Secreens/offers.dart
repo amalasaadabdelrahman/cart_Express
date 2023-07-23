@@ -1,4 +1,6 @@
+import 'package:cart_express/component/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Offers extends StatefulWidget {
   const Offers({Key? key}) : super(key: key);
@@ -29,22 +31,22 @@ class _OffersState extends State<Offers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Offers',
-          style: TextStyle(fontSize: 20),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.menu,
-            size: 30,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: Text(
+      //     'Offers',
+      //     style: TextStyle(fontSize: 20),
+      //   ),
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     onPressed: () {},
+      //     icon: Icon(
+      //       Icons.menu,
+      //       size: 30,
+      //     ),
+      //   ),
+      // ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -54,16 +56,13 @@ class _OffersState extends State<Offers> {
         ),
         child: Column(
           children: [
-            Transform.translate(
-              offset: Offset(0, -90),
-              child: Container(
+            Container(
+              width: double.infinity.w,
+              height: 100.h,
+              child: Image(
                 width: double.infinity,
-                height: 100,
-                child: Image(
-                  width: double.infinity,
-                  image: AssetImage('images/images/Path 20528.png'),
-                  fit: BoxFit.fill,
-                ),
+                image: AssetImage('images/images/Path 20528.png'),
+                fit: BoxFit.fill,
               ),
             ),
             Expanded(
@@ -155,8 +154,8 @@ class _OffersState extends State<Offers> {
                         ),
                         Container(
                           clipBehavior: Clip.antiAlias,
-                          width: 150,
-                          height: 40,
+                          width: 150.w,
+                          height: 40.h,
                           margin: EdgeInsets.only(
                             top: 40,
                           ),

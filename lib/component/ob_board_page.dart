@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuildPage extends StatefulWidget {
   const BuildPage({Key? key, required this.color, required this.image})
@@ -31,7 +32,7 @@ class _BuildPageState extends State<BuildPage> {
                       fontFamily: "Roboto"),
                 ),
                 SizedBox(
-                  height: 9,
+                  height: 9.h,
                 ),
                 Text(
                   'It is a long established fact that a reader will be distracted layout.',

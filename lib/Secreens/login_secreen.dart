@@ -1,7 +1,7 @@
 import 'package:cart_express/Secreens/singup_screen.dart';
 import 'package:cart_express/component/custom_button.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../component/bottom_navigation_bar.dart';
 import '../component/custom_text_form_field.dart';
 import 'forgetpassword.dart';
@@ -61,8 +61,8 @@ class _LoginSecreenState extends State<LoginSecreen> {
             alignment: Alignment.centerLeft,
             children: [
               Container(
-                width: double.infinity,
-                height: 300,
+                width: double.infinity.w,
+                height: 300.h,
                 child: Transform.translate(
                   offset: Offset(0, -10),
                   child: Image.asset(
@@ -94,8 +94,8 @@ class _LoginSecreenState extends State<LoginSecreen> {
               key: _formKey,
               child: Container(
                 clipBehavior: Clip.antiAlias,
-                width: 380,
-                height: 500,
+                width: 380.w,
+                height: 500.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   boxShadow: [
@@ -113,14 +113,14 @@ class _LoginSecreenState extends State<LoginSecreen> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 40,
+                          height: 40.h,
                         ),
                         Image.asset(
                           'images/images/logo.png',
                           color: Color(0XFF1ABCBC),
                         ),
                         SizedBox(
-                          height: 45,
+                          height: 45.h,
                         ),
                         CustomTextFormField(
                           textFormField: TextFormField(
@@ -153,7 +153,7 @@ class _LoginSecreenState extends State<LoginSecreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 20.h,
                         ),
                         CustomTextFormField(
                           textFormField: TextFormField(

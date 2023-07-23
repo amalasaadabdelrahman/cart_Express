@@ -2,7 +2,7 @@ import 'package:cart_express/Secreens/login_secreen.dart';
 import 'package:cart_express/component/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../component/ob_board_page.dart';
 
 class OnBoarding extends StatefulWidget {
