@@ -82,7 +82,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 child: Text(
                   'Sing Up',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 30.sp,
                     color: Colors.white,
                   ),
                 ),
@@ -131,7 +131,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             controller: userNameController,
                             decoration: InputDecoration(
                               hintStyle: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 color: Colors.black26,
                               ),
                               prefixIcon: Icon(
@@ -164,7 +164,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             controller: emailController,
                             decoration: InputDecoration(
                               hintStyle: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 color: Colors.black26,
                               ),
                               prefixIcon: Icon(
@@ -197,7 +197,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             controller: phoneNumberController,
                             decoration: InputDecoration(
                               hintStyle: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 color: Colors.black26,
                               ),
                               prefixIcon: Icon(
@@ -235,7 +235,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             controller: passwordController,
                             decoration: InputDecoration(
                               hintStyle: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 color: Colors.black26,
                               ),
                               prefixIcon: Transform.rotate(
@@ -277,7 +277,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                               Text(
                                 'you agree to the Terms& Privacy Policy',
                                 style: TextStyle(
-                                    fontSize: 10, fontWeight: FontWeight.w500),
+                                    fontSize: 10.sp, fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),

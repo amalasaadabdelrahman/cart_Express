@@ -51,7 +51,7 @@ class _ChooseCityState extends State<ChooseCity> {
               Text(
                 'Choose the city',
                 style: TextStyle(
-                  fontSize: 20.h,
+                  fontSize: 20.sp,
                   fontFamily: "Roboto",
                   color: Color(0XFF707070),
                   fontWeight: FontWeight.w500,
@@ -63,7 +63,7 @@ class _ChooseCityState extends State<ChooseCity> {
               Text(
                 'it is long established that a reader will',
                 style: TextStyle(
-                  fontSize: 11,
+                  fontSize: 11.sp,
                   fontFamily: "Roboto",
                   color: Color(0XFF707070),
                 ),
@@ -95,7 +95,7 @@ class _ChooseCityState extends State<ChooseCity> {
                     Text(
                       'City',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         fontFamily: "Roboto",
                       ),
                     ),

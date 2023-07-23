@@ -117,7 +117,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             controller: passwordController,
                             decoration: InputDecoration(
                               hintStyle: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 color: Colors.black26,
                               ),
                               prefixIcon: Transform.rotate(

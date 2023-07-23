@@ -36,7 +36,7 @@ class _Custom_ButtonState extends State<Custom_Button> {
         child: Text(
           widget.text,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 20.sp,
           ),
         ),
         onPressed: widget.onpressed,

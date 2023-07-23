@@ -58,14 +58,14 @@ class _HomeState extends State<Home> {
         title: Text(
           'Home',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 20.sp,
             color: Color(0XFF1ABCBC),
           ),
         ),
         centerTitle: true,
         actions: [
           Container(
-            width: 90,
+            width: 90.w,
             margin: EdgeInsets.symmetric(horizontal: 17, vertical: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
@@ -118,8 +118,8 @@ class _HomeState extends State<Home> {
                               });
                             },
                             child: AnimatedContainer(
-                              width: current == index ? 130 : 140,
-                              height: 40,
+                              width: current == index ? 130.w : 140.w,
+                              height: 40.h,
                               margin: EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                 boxShadow: [
@@ -188,7 +188,7 @@ class _HomeState extends State<Home> {
                                       Text(
                                         fruits[index],
                                         style: TextStyle(
-                                            fontSize: 13, color: Colors.grey),
+                                            fontSize: 13.sp, color: Colors.grey),
                                       ),
                                       Text(
                                         '5.00 \$ /K',
@@ -274,12 +274,12 @@ class _HomeState extends State<Home> {
                                       Text(
                                         fruits[index],
                                         style: TextStyle(
-                                            fontSize: 13, color: Colors.grey),
+                                            fontSize: 13.sp, color: Colors.grey),
                                       ),
                                       Text(
                                         '5.00 \$ /K',
                                         style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 18.sp,
                                             fontWeight: FontWeight.w700,
                                             color: Color(0XFF1ABCBC)),
                                       ),
@@ -360,12 +360,12 @@ class _HomeState extends State<Home> {
                                       Text(
                                         fruits[index],
                                         style: TextStyle(
-                                            fontSize: 13, color: Colors.grey),
+                                            fontSize: 13.sp, color: Colors.grey),
                                       ),
                                       Text(
                                         '5.00 \$ /K',
                                         style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 18.sp,
                                             fontWeight: FontWeight.w700,
                                             color: Color(0XFF1ABCBC)),
                                       ),
@@ -446,12 +446,12 @@ class _HomeState extends State<Home> {
                                       Text(
                                         fruits[index],
                                         style: TextStyle(
-                                            fontSize: 13, color: Colors.grey),
+                                            fontSize: 13.sp, color: Colors.grey),
                                       ),
                                       Text(
                                         '5.00 \$ /K',
                                         style: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 18.sp,
                                             fontWeight: FontWeight.w700,
                                             color: Color(0XFF1ABCBC)),
                                       ),

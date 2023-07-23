@@ -77,7 +77,7 @@ class _LoginSecreenState extends State<LoginSecreen> {
                 child: Text(
                   'Sing In',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 30.sp,
                     color: Colors.white,
                   ),
                 ),
@@ -128,7 +128,7 @@ class _LoginSecreenState extends State<LoginSecreen> {
                             controller: emailController,
                             decoration: InputDecoration(
                               hintStyle: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 color: Colors.black26,
                               ),
                               prefixIcon: Icon(
@@ -161,7 +161,7 @@ class _LoginSecreenState extends State<LoginSecreen> {
                             controller: passwordController,
                             decoration: InputDecoration(
                               hintStyle: TextStyle(
-                                fontSize: 15,
+                                fontSize: 15.sp,
                                 color: Colors.black26,
                               ),
                               prefixIcon: Transform.rotate(
@@ -198,7 +198,7 @@ class _LoginSecreenState extends State<LoginSecreen> {
                               'Forget password',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 11,
+                                fontSize: 11.sp,
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
@@ -215,7 +215,7 @@ class _LoginSecreenState extends State<LoginSecreen> {
                             Text(
                               "Don't have an acount ?",
                               style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.w500),
+                                  fontSize: 10.sp, fontWeight: FontWeight.w500),
                             ),
                             TextButton(
                               onPressed: () {
@@ -228,7 +228,7 @@ class _LoginSecreenState extends State<LoginSecreen> {
                                 'Sing Up',
                                 style: TextStyle(
                                   color: Color(0XFF1ABCBC),
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),

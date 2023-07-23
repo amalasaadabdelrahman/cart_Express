@@ -82,7 +82,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       'Skip',
                       style: TextStyle(
                         color: Color(0XFF1ABCBC),
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

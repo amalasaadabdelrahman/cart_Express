@@ -24,7 +24,7 @@ class _CartState extends State<Cart> {
         child: Column(
           children: [
             Container(
-              width: double.infinity,
+              width: double.infinity.w,
               height: 100.h,
               child: Image(
                 width: double.infinity.w,

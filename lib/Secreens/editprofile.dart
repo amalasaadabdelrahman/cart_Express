@@ -152,7 +152,7 @@ class _EditProfileState extends State<EditProfile> {
                                 controller: userNameController,
                                 decoration: InputDecoration(
                                   hintStyle: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 15.sp,
                                     color: Colors.black26,
                                   ),
                                   prefixIcon: Icon(
@@ -184,7 +184,7 @@ class _EditProfileState extends State<EditProfile> {
                                 controller: emailController,
                                 decoration: InputDecoration(
                                   hintStyle: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 15.sp,
                                     color: Colors.black26,
                                   ),
                                   prefixIcon: Icon(
@@ -218,7 +218,7 @@ class _EditProfileState extends State<EditProfile> {
                                 controller: phoneController,
                                 decoration: InputDecoration(
                                   hintStyle: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 15.sp,
                                     color: Colors.black26,
                                   ),
                                   prefixIcon: Transform.rotate(
