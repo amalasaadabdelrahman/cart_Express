@@ -48,11 +48,14 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              Scaffold.of(context).openDrawer();
+            });
+          },
           icon: Icon(
             Icons.menu,
             color: Color(0XFF1ABCBC).withOpacity(0.5),
-            size: 30,
           ),
         ),
         title: Text(
