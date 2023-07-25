@@ -63,7 +63,7 @@ class _SplashState extends State<Splash> {
                     child: Text(
                       'it is a long established fact that a reader will \nbe distrbuted layout',
                       style: TextStyle(
-                        fontSize: 11,
+                        fontSize: 11.sp,
                         fontFamily: "Roboto",
                         color: Color(0XFF707070),
                       ),

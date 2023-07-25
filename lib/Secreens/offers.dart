@@ -138,17 +138,17 @@ class _OffersState extends State<Offers> {
                         Expanded(child: Image(image: images[index])),
                         Text(
                           fruits[index],
-                          style: TextStyle(fontSize: 13, color: Colors.grey),
+                          style: TextStyle(fontSize: 13.sp, color: Colors.grey),
                         ),
                         Text('5.00 \$ /K',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               color: Colors.red,
                             )),
                         Text(
                           '5.00 \$ /K',
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.w700,
                               color: Color(0XFF1ABCBC)),
                         ),

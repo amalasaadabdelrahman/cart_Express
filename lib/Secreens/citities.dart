@@ -53,7 +53,7 @@ class _CitiesState extends State<Cities> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontFamily: "Roboto",
-            fontSize: 24,
+            fontSize: 24.sp,
           ),
         ),
         centerTitle: true,
@@ -69,7 +69,7 @@ class _CitiesState extends State<Cities> {
                 ),
                 title: Text(
                   '${cities[index]['name']}',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
                 ),
                 subtitle: Text(''),
                 shape: RoundedRectangleBorder(

@@ -72,7 +72,7 @@ class _ProfileState extends State<Profile> {
                   'Shimaa Zakarya',
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
-                    fontSize: 25,
+                    fontSize: 25.sp,
                     color: Color(0XFF1ABCBC),
                   ),
                 ),
@@ -91,11 +91,11 @@ class _ProfileState extends State<Profile> {
                     ),
                     title: Text(
                       'Email',
-                      style: TextStyle(fontSize: 15, color: Color(0XFF1ABCBC)),
+                      style: TextStyle(fontSize: 15.sp, color: Color(0XFF1ABCBC)),
                     ),
                     trailing: Text(
                       'shimaazakarya123@gmail.com',
-                      style: TextStyle(fontSize: 13, color: Colors.grey),
+                      style: TextStyle(fontSize: 13.sp, color: Colors.grey),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -120,11 +120,11 @@ class _ProfileState extends State<Profile> {
                     ),
                     title: Text(
                       'Phone',
-                      style: TextStyle(fontSize: 15, color: Color(0XFF1ABCBC)),
+                      style: TextStyle(fontSize: 15.sp, color: Color(0XFF1ABCBC)),
                     ),
                     trailing: Text(
                       '11111',
-                      style: TextStyle(fontSize: 13, color: Colors.grey),
+                      style: TextStyle(fontSize: 13.sp, color: Colors.grey),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
