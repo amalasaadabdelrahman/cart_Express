@@ -58,7 +58,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             width: double.infinity.w,
             height: 300.h,
             child: Transform.translate(
-              offset: Offset(0, -10),
+              offset: Offset(0, -60),
               child: Image.asset(
                 'images/images/path_19629.png',
                 color: Color(0XFF1ABCBC),
@@ -76,8 +76,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               key: _formKey,
               child: Container(
                 clipBehavior: Clip.antiAlias,
-                width: 380.w,
-                height: 450.h,
+                width: 335.w,
+                height: 353.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   boxShadow: [

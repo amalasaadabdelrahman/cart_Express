@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import '../Secreens/cart.dart';
 import '../Secreens/change_password.dart';
+import '../Secreens/contact_us.dart';
 import '../Secreens/home.dart';
 import '../Secreens/my_order.dart';
 import '../Secreens/offers.dart';
@@ -38,12 +39,12 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
     return Scaffold(
         drawer: Drawer(
           elevation: 0,
-          width: 325,
+          width: 325.w,
           child: SafeArea(
             child: Column(
               children: [
                 Transform.translate(
-                  offset: Offset(-125, 0),
+                  offset: Offset(-150, 0),
                   child: Image.asset(
                     'images/images/menu.png',
                     color: Color(0XFF1ABCBC),
@@ -51,7 +52,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                 ),
                 Text(
                   'Menu',
-                  style: TextStyle(fontSize: 20, color: Color(0XFF1ABCBC)),
+                  style: TextStyle(fontSize: 20.sp, color: Color(0XFF1ABCBC)),
                 ),
                 ListTile(
                   leading: Icon(
@@ -60,7 +61,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'My order',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
                   trailing: InkWell(
                     child: Icon(
@@ -81,7 +82,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'Change Languages',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
                   trailing: Icon(
                     Icons.arrow_back_ios,
@@ -96,7 +97,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'Change Password',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
                   trailing: InkWell(
                     child: Icon(
@@ -134,7 +135,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'About us',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
                   trailing: InkWell(
                     onTap: () {
@@ -155,12 +156,22 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'Contact us',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
-                  trailing: Icon(
-                    Icons.arrow_back_ios,
-                    textDirection: TextDirection.rtl,
-                    color: Colors.black,
+                  trailing: InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ContactUs()));
+                      });
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 ListTile(
@@ -170,7 +181,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'Share App',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
                   trailing: Icon(
                     Icons.arrow_back_ios,
@@ -185,7 +196,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'FQA',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
                   trailing: Icon(
                     Icons.arrow_back_ios,
@@ -200,7 +211,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'Term of use',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
                   trailing: Icon(
                     Icons.arrow_back_ios,
@@ -215,7 +226,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'Privacy policy',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
                   trailing: Icon(
                     Icons.arrow_back_ios,
@@ -230,7 +241,7 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                   title: Text(
                     'Logout',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15.sp),
                   ),
                   trailing: Icon(
                     Icons.arrow_back_ios,

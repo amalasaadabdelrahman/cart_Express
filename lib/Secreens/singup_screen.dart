@@ -69,7 +69,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 width: double.infinity.w,
                 height: 300.h,
                 child: Transform.translate(
-                  offset: Offset(0, -10),
+                  offset: Offset(0, -60),
                   child: Image.asset(
                     'images/images/path_19629.png',
                     color: Color(0XFF1ABCBC),
@@ -78,7 +78,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 200.0, left: 20),
+                padding: const EdgeInsets.only(bottom: 250.0, left: 20),
                 child: Text(
                   'Sing Up',
                   style: TextStyle(
@@ -99,6 +99,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
               key: _formKey,
               child: Container(
                 width: 380.w,
+                margin: EdgeInsets.only(bottom: 10),
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
@@ -277,7 +278,8 @@ class _SingUpScreenState extends State<SingUpScreen> {
                               Text(
                                 'you agree to the Terms& Privacy Policy',
                                 style: TextStyle(
-                                    fontSize: 10.sp, fontWeight: FontWeight.w500),
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),

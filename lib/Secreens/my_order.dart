@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../component/bottom_navigation_bar.dart';
 
@@ -17,11 +18,11 @@ class _MyOrderState extends State<MyOrder> {
         iconTheme: IconThemeData(
           color: Colors.white,
         ),
-        toolbarHeight: 50,
+        toolbarHeight: 50.h,
         backgroundColor: Color(0XFF1ABCBC),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
+            bottom: Radius.circular(25),
           ),
         ),
         centerTitle: true,
@@ -42,14 +43,14 @@ class _MyOrderState extends State<MyOrder> {
                                 builder: (context) => ButtomNavigationBar()));
                       },
                     ),
-                    SizedBox(width: 110),
+                    SizedBox(width: 110.w),
                     Text(
                       'My Orders',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.normal,
                           fontStyle: FontStyle.normal,
-                          fontSize: 20),
+                          fontSize: 20.sp),
                     ),
                   ],
                 ),

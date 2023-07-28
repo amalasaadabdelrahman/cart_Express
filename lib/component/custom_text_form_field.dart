@@ -13,8 +13,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300.w,
-      height: 65.h,
+      width: 280.w,
+      height: 40.h,
       child: widget.textFormField,
       decoration: BoxDecoration(
         border: Border.all(

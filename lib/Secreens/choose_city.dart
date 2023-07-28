@@ -16,7 +16,8 @@ class _ChooseCityState extends State<ChooseCity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+        body: SafeArea(
+      child: Stack(
         children: [
           Container(
             width: double.infinity.w,
@@ -131,6 +132,6 @@ class _ChooseCityState extends State<ChooseCity> {
           ),
         ],
       ),
-    );
+    ));
   }
 }

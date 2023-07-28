@@ -1,3 +1,4 @@
+import 'package:cart_express/Secreens/search.dart';
 import 'package:cart_express/component/custom_button.dart';
 import 'package:cart_express/constants/const.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,10 @@ class _HomeState extends State<Home> {
             child: Padding(
               padding: const EdgeInsets.only(left: 50),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => Search()));
+                },
                 icon: Icon(
                   Icons.search,
                   color: Color(0XFF1ABCBC).withOpacity(0.5),
@@ -122,7 +126,7 @@ class _HomeState extends State<Home> {
                             },
                             child: AnimatedContainer(
                               width: current == index ? 130.w : 140.w,
-                              height: 40.h,
+                              height: 10.h,
                               margin: EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                 boxShadow: [
@@ -157,6 +161,7 @@ class _HomeState extends State<Home> {
                   ),
                   current == 0
                       ? Expanded(
+                          flex: 1,
                           child: Container(
                             width: double.infinity.w,
                             margin: EdgeInsets.only(top: 25),
@@ -191,7 +196,8 @@ class _HomeState extends State<Home> {
                                       Text(
                                         fruits[index],
                                         style: TextStyle(
-                                            fontSize: 13.sp, color: Colors.grey),
+                                            fontSize: 13.sp,
+                                            color: Colors.grey),
                                       ),
                                       Text(
                                         '5.00 \$ /K',
@@ -277,7 +283,8 @@ class _HomeState extends State<Home> {
                                       Text(
                                         fruits[index],
                                         style: TextStyle(
-                                            fontSize: 13.sp, color: Colors.grey),
+                                            fontSize: 13.sp,
+                                            color: Colors.grey),
                                       ),
                                       Text(
                                         '5.00 \$ /K',
@@ -363,7 +370,8 @@ class _HomeState extends State<Home> {
                                       Text(
                                         fruits[index],
                                         style: TextStyle(
-                                            fontSize: 13.sp, color: Colors.grey),
+                                            fontSize: 13.sp,
+                                            color: Colors.grey),
                                       ),
                                       Text(
                                         '5.00 \$ /K',
@@ -449,7 +457,8 @@ class _HomeState extends State<Home> {
                                       Text(
                                         fruits[index],
                                         style: TextStyle(
-                                            fontSize: 13.sp, color: Colors.grey),
+                                            fontSize: 13.sp,
+                                            color: Colors.grey),
                                       ),
                                       Text(
                                         '5.00 \$ /K',

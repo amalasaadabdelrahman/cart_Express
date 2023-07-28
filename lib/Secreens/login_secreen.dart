@@ -64,7 +64,7 @@ class _LoginSecreenState extends State<LoginSecreen> {
                 width: double.infinity.w,
                 height: 300.h,
                 child: Transform.translate(
-                  offset: Offset(0, -10),
+                  offset: Offset(0, -60),
                   child: Image.asset(
                     'images/images/path_19629.png',
                     color: Color(0XFF1ABCBC),
@@ -73,7 +73,7 @@ class _LoginSecreenState extends State<LoginSecreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 200.0, left: 20),
+                padding: const EdgeInsets.only(bottom: 250.0, left: 20),
                 child: Text(
                   'Sing In',
                   style: TextStyle(
@@ -94,8 +94,8 @@ class _LoginSecreenState extends State<LoginSecreen> {
               key: _formKey,
               child: Container(
                 clipBehavior: Clip.antiAlias,
-                width: 380.w,
-                height: 500.h,
+                width: 335.w,
+                height: 427.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   boxShadow: [

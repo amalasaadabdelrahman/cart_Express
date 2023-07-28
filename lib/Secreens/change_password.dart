@@ -38,17 +38,17 @@ class _ChangePasswordState extends State<ChangePassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 64,
+        toolbarHeight: 50.h,
         backgroundColor: Color(0XFF1ABCBC),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
+            bottom: Radius.circular(25),
           ),
         ),
         centerTitle: true,
         title: Text(
           'Change Password',
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 20.sp),
         ),
         leading: InkWell(
           child: Icon(Icons.arrow_back_ios),
@@ -65,15 +65,16 @@ class _ChangePasswordState extends State<ChangePassword> {
             color: Color(0XFF1ABCBC),
             image: AssetImage('images/images/background.png'),
           ),
-          Column(
-            children: [
-              Form(
-                key: _formKey,
-                child: Expanded(
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Form(
+                  key: _formKey,
                   child: Container(
                     width: 500.w,
                     margin: EdgeInsets.only(
                         left: 20, right: 20, bottom: 100, top: 60),
+                    padding: EdgeInsets.only(bottom: 32),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20)),
@@ -96,7 +97,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   controller: oldPaswordController,
                                   decoration: InputDecoration(
                                     hintStyle: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 15.sp,
                                       color: Colors.black26,
                                     ),
                                     prefixIcon: Transform.rotate(
@@ -127,7 +128,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   controller: newPasswordController,
                                   decoration: InputDecoration(
                                     hintStyle: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 15.sp,
                                       color: Colors.black26,
                                     ),
                                     prefixIcon: Transform.rotate(
@@ -158,7 +159,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                   controller: confirmPaswordController,
                                   decoration: InputDecoration(
                                     hintStyle: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 15.sp,
                                       color: Colors.black26,
                                     ),
                                     prefixIcon: Transform.rotate(
@@ -197,9 +198,9 @@ class _ChangePasswordState extends State<ChangePassword> {
                       ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ],
       ),

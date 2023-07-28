@@ -15,6 +15,7 @@ class OnBoarding extends StatefulWidget {
 class _OnBoardingState extends State<OnBoarding> {
   final controller = PageController();
   bool isLastPage = false;
+  int currentIndex = 0;
   @override
   void dispose() {
     controller.dispose();
@@ -24,30 +25,28 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(bottom: 80),
-        child: PageView(
-          controller: controller,
-          onPageChanged: (index) {
-            setState(() {
-              isLastPage = (index == 2);
-            });
-          },
-          children: [
-            BuildPage(
-              color: Color(0XFFDCF1DA),
-              image: Image.asset('images/images/radish.png'),
-            ),
-            BuildPage(
-              color: Color(0XFFF8F3D5),
-              image: Image.asset('images/images/lemon.png'),
-            ),
-            BuildPage(
-              color: Color(0XFFFDCF1DA),
-              image: Image.asset('images/images/Peas.png'),
-            )
-          ],
-        ),
+      body: PageView(
+        controller: controller,
+        onPageChanged: (index) {
+          setState(() {
+            currentIndex = index;
+            isLastPage = (currentIndex == 2);
+          });
+        },
+        children: [
+          BuildPage(
+            color: Color(0XFFDCF1DA),
+            image: Image.asset('images/images/radish.png'),
+          ),
+          BuildPage(
+            color: Color(0XFFF8F3D5),
+            image: Image.asset('images/images/lemon.png'),
+          ),
+          BuildPage(
+            color: Color(0XFFFDCF1DA),
+            image: Image.asset('images/images/Peas.png'),
+          )
+        ],
       ),
       bottomSheet: Padding(
         padding: const EdgeInsets.only(
@@ -59,16 +58,34 @@ class _OnBoardingState extends State<OnBoarding> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             isLastPage
-                ? Custom_Button(
-                    text: 'Get Started',
-                    onpressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginSecreen(),
+                ? Container(
+                    clipBehavior: Clip.antiAlias,
+                    width: 150.w,
+                    height: 40.h,
+                    margin: EdgeInsets.only(top: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadiusDirectional.only(
+                        topEnd: Radius.circular(15),
+                        bottomStart: Radius.circular(15),
+                      ),
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginSecreen(),
+                          ),
+                        );
+                      },
+                      child: Text('Get started'),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateColor.resolveWith(
+                          (states) => Color(0XFF1ABCBC),
                         ),
-                      );
-                    })
+                      ),
+                    ),
+                  )
                 : TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(

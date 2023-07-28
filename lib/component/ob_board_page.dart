@@ -21,7 +21,7 @@ class _BuildPageState extends State<BuildPage> {
           Container(
             color: widget.color,
             child: Padding(
-              padding: const EdgeInsets.only(top: 600, left: 30),
+              padding: const EdgeInsets.only(top: 600, left: 30, bottom: 60),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,10 +39,10 @@ class _BuildPageState extends State<BuildPage> {
                     ),
                     Text(
                       'It is a long established fact that a reader will be distracted layout.',
-                      style: TextStyle(fontSize: 15.sp),
+                      style: TextStyle(fontSize: 14.sp),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -51,7 +51,7 @@ class _BuildPageState extends State<BuildPage> {
           Transform.translate(
             offset: Offset(100, 0),
             child: widget.image,
-          )
+          ),
         ],
       ),
     );

@@ -39,7 +39,11 @@ class _ProfileState extends State<Profile> {
             Padding(
               padding: const EdgeInsets.only(top: 42.0),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    Scaffold.of(context).openDrawer();
+                  });
+                },
                 icon: Icon(
                   Icons.menu,
                   size: 30,
@@ -91,7 +95,8 @@ class _ProfileState extends State<Profile> {
                     ),
                     title: Text(
                       'Email',
-                      style: TextStyle(fontSize: 15.sp, color: Color(0XFF1ABCBC)),
+                      style:
+                          TextStyle(fontSize: 15.sp, color: Color(0XFF1ABCBC)),
                     ),
                     trailing: Text(
                       'shimaazakarya123@gmail.com',
@@ -120,7 +125,8 @@ class _ProfileState extends State<Profile> {
                     ),
                     title: Text(
                       'Phone',
-                      style: TextStyle(fontSize: 15.sp, color: Color(0XFF1ABCBC)),
+                      style:
+                          TextStyle(fontSize: 15.sp, color: Color(0XFF1ABCBC)),
                     ),
                     trailing: Text(
                       '11111',
