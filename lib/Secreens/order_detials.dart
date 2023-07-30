@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../component/custom_container.dart';
+import 'my_order.dart';
 
 class OrderDetails extends StatefulWidget {
   const OrderDetails({Key? key}) : super(key: key);
@@ -28,7 +29,10 @@ class _OrderDetailsState extends State<OrderDetails> {
           style: TextStyle(fontSize: 20.sp),
         ),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => MyOrder()));
+          },
           icon: Icon(Icons.arrow_back_ios),
         ),
       ),
