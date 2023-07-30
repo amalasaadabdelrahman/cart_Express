@@ -11,6 +11,7 @@ class MyOrder extends StatefulWidget {
 }
 
 class _MyOrderState extends State<MyOrder> {
+  bool result = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +56,441 @@ class _MyOrderState extends State<MyOrder> {
                   ],
                 ),
               ],
+            ),
+          ],
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 30.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      if (result ?? true) {
+                        Navigator.pushReplacementNamed(context, '/Orders');
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0XFF1ABCBC),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        // side: BorderSide(color: Colors.blue, width: 1),
+                      ),
+                      minimumSize: Size(160.w, 40.h),
+                    ),
+                    child: Text(
+                      'Open Orders',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (result ?? true) {
+                        Navigator.pushReplacementNamed(context, '/Com_Orders');
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        //side: BorderSide(color: Colors.blue, width: 1),
+                      ),
+                      minimumSize: Size(160.w, 40.h),
+                    ),
+                    child: Text(
+                      'Completed Orders',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                onPressed: () {
+
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'images/images/tr.png',
+                      height: 28.h,
+                      width: 42.w,
+                    ),
+                    SizedBox(width: 5),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Order ID : 12892222',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          '12/2/2019 Total : 100S',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 70),
+                    Text(
+                      'on Delivery',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Icon(
+                      Icons.navigate_next,
+                      color: Colors.black,
+                      size: 30,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(height: 15.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                onPressed: () {
+
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'images/images/tr.png',
+                      height: 28.h,
+                      width: 42.w,
+                    ),
+                    SizedBox(width: 5),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Order ID : 12892222',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          '12/2/2019 Total : 100S',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 70),
+                    Text(
+                      'on Delivery',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Icon(
+                      Icons.navigate_next,
+                      color: Colors.black,
+                      size: 30,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+
+            SizedBox(height: 15.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                onPressed: () {
+
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'images/images/tr.png',
+                      height: 28.h,
+                      width: 42.w,
+                    ),
+                    SizedBox(width: 5),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Order ID : 12892222',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          '12/2/2019 Total : 100S',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 70),
+                    Text(
+                      'on Delivery',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Icon(
+                      Icons.navigate_next,
+                      color: Colors.black,
+                      size: 30,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(height: 15.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                onPressed: () {
+
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'images/images/tr.png',
+                      height: 28.h,
+                      width: 42.w,
+                    ),
+                    SizedBox(width: 5),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Order ID : 12892222',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          '12/2/2019 Total : 100S',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 70),
+                    Text(
+                      'on Delivery',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Icon(
+                      Icons.navigate_next,
+                      color: Colors.black,
+                      size: 30,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 15.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                onPressed: () {
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'images/images/tr.png',
+                      height: 28.h,
+                      width: 42.w,
+                    ),
+                    SizedBox(width: 5),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Order ID : 12892222',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          '12/2/2019 Total : 100S',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 70),
+                    Text(
+                      'on Delivery',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Icon(
+                      Icons.navigate_next,
+                      color: Colors.black,
+                      size: 30,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 15.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                onPressed: () {
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'images/images/tr.png',
+                      height: 28.h,
+                      width: 42.w,
+                    ),
+                    SizedBox(width: 5),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Order ID : 12892222',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          '12/2/2019 Total : 100S',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 70),
+                    Text(
+                      'on Delivery',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    Icon(
+                      Icons.navigate_next,
+                      color: Colors.black,
+                      size: 30,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
