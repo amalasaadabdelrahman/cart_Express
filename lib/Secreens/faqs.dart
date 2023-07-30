@@ -2,6 +2,8 @@ import 'package:cart_express/models/faq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../component/bottom_navigation_bar.dart';
+
 class FAQs extends StatefulWidget {
   const FAQs({super.key});
 
@@ -14,23 +16,23 @@ class _FAQsState extends State<FAQs> {
     Faq(
         question: 'What is store ?',
         answer:
-        'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
+            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
     Faq(
         question: 'What is store ?',
         answer:
-        'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
+            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
     Faq(
         question: 'What is store ?',
         answer:
-        'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
+            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
     Faq(
         question: 'What is store ?',
         answer:
-        'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
+            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
     Faq(
         question: 'What is store ?',
         answer:
-        'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
+            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
   ];
 
   @override
@@ -49,7 +51,6 @@ class _FAQsState extends State<FAQs> {
           ),
         ),
         centerTitle: true,
-
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -58,7 +59,15 @@ class _FAQsState extends State<FAQs> {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.arrow_back_ios),
+                    InkWell(
+                      child: Icon(Icons.arrow_back_ios),
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ButtomNavigationBar()));
+                      },
+                    ),
                     SizedBox(width: 130.w),
                     Text(
                       ' FAQ',
@@ -78,9 +87,9 @@ class _FAQsState extends State<FAQs> {
       body: ListView(
         children: [
           ExpansionPanelList(
-            animationDuration: Duration(seconds: 1) ,
+            animationDuration: Duration(seconds: 1),
             elevation: 0,
-            expandedHeaderPadding: EdgeInsets.zero ,
+            expandedHeaderPadding: EdgeInsets.zero,
             dividerColor: Colors.grey,
             expansionCallback: (panelIndex, isExpanded) {
               setState(() => _faqs[panelIndex].isExpanded = !isExpanded);
@@ -88,13 +97,14 @@ class _FAQsState extends State<FAQs> {
             children: _faqs.map((Faq faq) {
               return ExpansionPanel(
                   backgroundColor: Colors.white,
-
                   canTapOnHeader: true,
                   isExpanded: faq.isExpanded,
                   headerBuilder: (context, isExpanded) {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:20 , vertical: 25),
-                      child: Text(faq.question,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 25),
+                      child: Text(
+                        faq.question,
                         style: TextStyle(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.normal,
@@ -106,7 +116,8 @@ class _FAQsState extends State<FAQs> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Align(
                       alignment: AlignmentDirectional.centerStart,
-                      child: Text(faq.answer,
+                      child: Text(
+                        faq.answer,
                         style: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.normal,

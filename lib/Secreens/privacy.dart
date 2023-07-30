@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../component/bottom_navigation_bar.dart';
+
 class Privacy extends StatefulWidget {
   const Privacy({super.key});
 
@@ -32,7 +34,15 @@ class _PrivacyState extends State<Privacy> {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.arrow_back_ios),
+                    InkWell(
+                      child: Icon(Icons.arrow_back_ios),
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ButtomNavigationBar()));
+                      },
+                    ),
                     SizedBox(width: 90.w),
                     Text(
                       'Privacy policy',
@@ -84,7 +94,6 @@ class _PrivacyState extends State<Privacy> {
           ),
         ],
       ),
-
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../component/bottom_navigation_bar.dart';
+
 class Terms extends StatefulWidget {
   const Terms({super.key});
 
@@ -9,7 +11,6 @@ class Terms extends StatefulWidget {
 }
 
 class _TermsState extends State<Terms> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +29,21 @@ class _TermsState extends State<Terms> {
         centerTitle: true,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
             Column(
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Icon(Icons.arrow_back_ios),
+                    InkWell(
+                      child: Icon(Icons.arrow_back_ios),
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ButtomNavigationBar()));
+                      },
+                    ),
                     SizedBox(width: 130.w),
                     Text(
                       'Terms',
@@ -87,7 +95,6 @@ class _TermsState extends State<Terms> {
           ),
         ],
       ),
-
     );
   }
 }

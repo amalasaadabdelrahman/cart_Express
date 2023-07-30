@@ -7,7 +7,7 @@ import '../Secreens/cart.dart';
 import '../Secreens/change_password.dart';
 import '../Secreens/contact_us.dart';
 import '../Secreens/home.dart';
-import '../Secreens/my_order.dart';
+// import '../Secreens/my_order.dart';
 import '../Secreens/terms.dart';
 import '../Secreens/faqs.dart';
 import '../Secreens/privacy.dart';
@@ -73,8 +73,8 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                       color: Colors.black,
                     ),
                     onTap: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => MyOrder()));
+                      // Navigator.pushReplacement(context,
+                      //     MaterialPageRoute(builder: (context) => MyOrder()));
                     },
                   ),
                 ),
@@ -204,10 +204,8 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   trailing: InkWell(
                     onTap: () {
                       setState(() {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => FAQs()));
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => FAQs()));
                       });
                     },
                     child: Icon(
@@ -229,10 +227,8 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   trailing: InkWell(
                     onTap: () {
                       setState(() {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Terms()));
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Terms()));
                       });
                     },
                     child: Icon(
@@ -254,10 +250,8 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   trailing: InkWell(
                     onTap: () {
                       setState(() {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Privacy()));
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Privacy()));
                       });
                     },
                     child: Icon(
