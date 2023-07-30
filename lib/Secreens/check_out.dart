@@ -25,7 +25,7 @@ class _CheckOutState extends State<CheckOut> {
                   borderRadius: BorderRadius.circular(14)),
               child: Container(
                 width: 270.w,
-                height: 244.h,
+                height: 250.h,
                 padding: EdgeInsets.all(44),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -165,14 +165,7 @@ class _CheckOutState extends State<CheckOut> {
                               width: 140.w,
                             ),
                             IconButton(
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Cities(),
-                                  ),
-                                );
-                              },
+                              onPressed: () {},
                               icon: Icon(
                                 Icons.arrow_back_ios,
                                 textDirection: TextDirection.rtl,
@@ -292,7 +285,7 @@ class _CheckOutState extends State<CheckOut> {
                                                   BorderRadius.circular(14)),
                                           child: Container(
                                             width: 270.w,
-                                            height: 244.h,
+                                            height: 250.h,
                                             padding: EdgeInsets.all(44),
                                             child: Column(
                                               mainAxisAlignment:
@@ -340,7 +333,7 @@ class _CheckOutState extends State<CheckOut> {
                                                   BorderRadius.circular(14)),
                                           child: Container(
                                             width: 270.w,
-                                            height: 244.h,
+                                            height: 250.h,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
                                                   top: 50.0,

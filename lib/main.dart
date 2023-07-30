@@ -2,6 +2,8 @@ import 'package:cart_express/Secreens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'Secreens/order_detials.dart';
+
 void main() {
   runApp(const MyApp());
 }

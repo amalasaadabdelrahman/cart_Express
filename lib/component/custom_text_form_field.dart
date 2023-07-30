@@ -15,7 +15,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return Container(
       width: 280.w,
       height: 40.h,
-      child: widget.textFormField,
+      child: Center(child: widget.textFormField),
       decoration: BoxDecoration(
         border: Border.all(
           color: Color(0XFF1ABCBC),

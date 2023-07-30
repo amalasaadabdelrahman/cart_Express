@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '../models/cities.dart';
 import 'choose_city.dart';
 
 class Cities extends StatefulWidget {
@@ -13,22 +12,13 @@ class Cities extends StatefulWidget {
 }
 
 class _CitiesState extends State<Cities> {
-  List<dynamic> cities = [];
-  void getCities() async {
-    print('fetched data');
-    const url = 'https://sallah.hexacit.com/api/getCities';
-    final uri = Uri.parse(url);
-    final response = await http.get(uri);
-    final body = response.body;
-    final json = jsonDecode(body);
-    setState(() {
-      cities = json['cities'];
-    });
+  Future<http.Response> fetchAlbum() async {
+    return await http
+        .get(Uri.parse('https://sallah.hexacit.com/api/getCities'));
   }
 
   @override
   void initState() {
-    getCities();
     super.initState();
   }
 
@@ -68,8 +58,9 @@ class _CitiesState extends State<Cities> {
                   color: Color(0XFF1ABCBC),
                 ),
                 title: Text(
-                  '${cities[index]['name']}',
-                  style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
+                  '',
+                  style:
+                      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
                 ),
                 subtitle: Text(''),
                 shape: RoundedRectangleBorder(
@@ -88,7 +79,7 @@ class _CitiesState extends State<Cities> {
                 height: 18.h,
               );
             },
-            itemCount: cities.length),
+            itemCount: 10),
       ),
     );
   }
