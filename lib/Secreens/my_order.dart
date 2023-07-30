@@ -118,7 +118,8 @@ class _MyOrderState extends State<MyOrder> {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 30.h),
+            SizedBox(height: 15.h),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
@@ -130,7 +131,7 @@ class _MyOrderState extends State<MyOrder> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                  minimumSize: Size(250.w, 75.h),
                 ),
                 child: Row(
                   children: [
@@ -139,7 +140,7 @@ class _MyOrderState extends State<MyOrder> {
                       height: 28.h,
                       width: 42.w,
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -147,27 +148,27 @@ class _MyOrderState extends State<MyOrder> {
                           'Order ID : 12892222',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         Text(
                           '12/2/2019 Total : 100S',
                           style: TextStyle(
                             color: Colors.grey,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(width: 70),
+                    SizedBox(width: 50.w),
                     Text(
                       'on Delivery',
                       style: TextStyle(
                         color: Colors.red,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
@@ -193,7 +194,7 @@ class _MyOrderState extends State<MyOrder> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                  minimumSize: Size(250.w, 75.h),
                 ),
                 child: Row(
                   children: [
@@ -202,7 +203,7 @@ class _MyOrderState extends State<MyOrder> {
                       height: 28.h,
                       width: 42.w,
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -210,27 +211,27 @@ class _MyOrderState extends State<MyOrder> {
                           'Order ID : 12892222',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         Text(
                           '12/2/2019 Total : 100S',
                           style: TextStyle(
                             color: Colors.grey,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(width: 70),
+                    SizedBox(width: 50.w),
                     Text(
                       'on Delivery',
                       style: TextStyle(
                         color: Colors.red,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
@@ -257,7 +258,7 @@ class _MyOrderState extends State<MyOrder> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                  minimumSize: Size(250.w, 75.h),
                 ),
                 child: Row(
                   children: [
@@ -266,7 +267,7 @@ class _MyOrderState extends State<MyOrder> {
                       height: 28.h,
                       width: 42.w,
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -274,27 +275,27 @@ class _MyOrderState extends State<MyOrder> {
                           'Order ID : 12892222',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         Text(
                           '12/2/2019 Total : 100S',
                           style: TextStyle(
                             color: Colors.grey,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(width: 70),
+                    SizedBox(width: 50.w),
                     Text(
                       'on Delivery',
                       style: TextStyle(
                         color: Colors.red,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
@@ -320,7 +321,7 @@ class _MyOrderState extends State<MyOrder> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                  minimumSize: Size(250.w, 75.h),
                 ),
                 child: Row(
                   children: [
@@ -329,7 +330,7 @@ class _MyOrderState extends State<MyOrder> {
                       height: 28.h,
                       width: 42.w,
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -337,27 +338,27 @@ class _MyOrderState extends State<MyOrder> {
                           'Order ID : 12892222',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         Text(
                           '12/2/2019 Total : 100S',
                           style: TextStyle(
                             color: Colors.grey,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(width: 70),
+                    SizedBox(width: 50.w),
                     Text(
                       'on Delivery',
                       style: TextStyle(
                         color: Colors.red,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
@@ -375,13 +376,14 @@ class _MyOrderState extends State<MyOrder> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
                 onPressed: () {
+
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                  minimumSize: Size(250.w, 75.h),
                 ),
                 child: Row(
                   children: [
@@ -390,7 +392,7 @@ class _MyOrderState extends State<MyOrder> {
                       height: 28.h,
                       width: 42.w,
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -398,27 +400,27 @@ class _MyOrderState extends State<MyOrder> {
                           'Order ID : 12892222',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         Text(
                           '12/2/2019 Total : 100S',
                           style: TextStyle(
                             color: Colors.grey,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(width: 70),
+                    SizedBox(width: 50.w),
                     Text(
                       'on Delivery',
                       style: TextStyle(
                         color: Colors.red,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
@@ -436,13 +438,14 @@ class _MyOrderState extends State<MyOrder> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
                 onPressed: () {
+
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  minimumSize: Size(250.toDouble(), 75.toDouble()),
+                  minimumSize: Size(250.w, 75.h),
                 ),
                 child: Row(
                   children: [
@@ -451,7 +454,7 @@ class _MyOrderState extends State<MyOrder> {
                       height: 28.h,
                       width: 42.w,
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -459,27 +462,27 @@ class _MyOrderState extends State<MyOrder> {
                           'Order ID : 12892222',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         Text(
                           '12/2/2019 Total : 100S',
                           style: TextStyle(
                             color: Colors.grey,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(width: 70),
+                    SizedBox(width: 50.w),
                     Text(
                       'on Delivery',
                       style: TextStyle(
                         color: Colors.red,
-                        fontSize: 12,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
