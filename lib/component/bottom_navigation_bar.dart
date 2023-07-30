@@ -8,6 +8,9 @@ import '../Secreens/change_password.dart';
 import '../Secreens/contact_us.dart';
 import '../Secreens/home.dart';
 import '../Secreens/my_order.dart';
+import '../Secreens/terms.dart';
+import '../Secreens/faqs.dart';
+import '../Secreens/privacy.dart';
 import '../Secreens/offers.dart';
 import '../Secreens/profile.dart';
 import '../constants/const.dart';
@@ -198,10 +201,20 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                     'FQA',
                     style: TextStyle(fontSize: 15.sp),
                   ),
-                  trailing: Icon(
-                    Icons.arrow_back_ios,
-                    textDirection: TextDirection.rtl,
-                    color: Colors.black,
+                  trailing: InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FAQs()));
+                      });
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 ListTile(
@@ -213,10 +226,20 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                     'Term of use',
                     style: TextStyle(fontSize: 15.sp),
                   ),
-                  trailing: Icon(
-                    Icons.arrow_back_ios,
-                    textDirection: TextDirection.rtl,
-                    color: Colors.black,
+                  trailing: InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Terms()));
+                      });
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 ListTile(
@@ -228,10 +251,20 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                     'Privacy policy',
                     style: TextStyle(fontSize: 15.sp),
                   ),
-                  trailing: Icon(
-                    Icons.arrow_back_ios,
-                    textDirection: TextDirection.rtl,
-                    color: Colors.black,
+                  trailing: InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Privacy()));
+                      });
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 ListTile(
