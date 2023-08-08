@@ -17,10 +17,7 @@ class _Custom_ButtonState extends State<Custom_Button> {
     return Container(
       clipBehavior: Clip.antiAlias,
       width: 180.w,
-      height: 50.h,
-      margin: EdgeInsets.only(
-        top: 40,
-      ),
+      height: 40.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadiusDirectional.only(
           topEnd: Radius.circular(15),

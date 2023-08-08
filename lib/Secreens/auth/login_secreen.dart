@@ -2,10 +2,11 @@ import 'package:cart_express/Secreens/singup_screen.dart';
 import 'package:cart_express/component/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../component/bottom_navigation_bar.dart';
-import '../component/custom_text_form_field.dart';
-import 'forgetpassword.dart';
-import 'home.dart';
+import '../../api/controller/user_api_controller.dart';
+import '../../component/bottom_navigation_bar.dart';
+import '../../component/custom_textformfield.dart';
+import '../forgetpassword.dart';
+import '../home.dart';
 
 class LoginSecreen extends StatefulWidget {
   const LoginSecreen({Key? key}) : super(key: key);
@@ -122,68 +123,37 @@ class _LoginSecreenState extends State<LoginSecreen> {
                         SizedBox(
                           height: 45.h,
                         ),
-                        CustomTextFormField(
-                          textFormField: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            controller: emailController,
-                            decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontSize: 15.sp,
-                                color: Colors.black26,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.email,
-                                color: Color(0XFF1ABCBC),
-                              ),
-                              hintText: 'Email',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                            ),
-                            validator: (String? value) {
-                              if (value == null || value.trim().length == 0) {
-                                return "*Required";
-                              }
-                              if (!RegExp(
-                                      r"^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'*')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])")
-                                  .hasMatch(value)) {
-                                return "Invalid Email Address";
-                              } else
-                                return null;
-                            },
-                          ),
+                        CustomTextField(
+                          controller: emailController,
+                          hintText: 'Email',
+                          prefixIcon: Icons.email,
+                          keyboardtype: TextInputType.emailAddress,
+                          validator: (String? value) {
+                            if (value == null || value.trim().length == 0) {
+                              return "*Required";
+                            }
+                            if (!RegExp(
+                                    r"^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'*')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])")
+                                .hasMatch(value)) {
+                              return "Invalid Email Address";
+                            } else
+                              return null;
+                          },
                         ),
-                        SizedBox(
-                          height: 20.h,
-                        ),
-                        CustomTextFormField(
-                          textFormField: TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
-                            controller: passwordController,
-                            decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontSize: 15.sp,
-                                color: Colors.black26,
-                              ),
-                              prefixIcon: Transform.rotate(
-                                angle: 360,
-                                child: Icon(
-                                  Icons.key,
-                                  color: Color(0XFF1ABCBC),
-                                ),
-                              ),
-                              hintText: 'password',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                            ),
-                            validator: (String? value) {
-                              if (value == null || value.trim().length == 0) {
-                                return "*Required";
-                              }
-                              if (value.length < 6) {
-                                return "password should not be less than 6 characters";
-                              }
-                            },
-                          ),
+                        CustomTextField(
+                          controller: passwordController,
+                          hintText: 'Password',
+                          prefixIcon: Icons.key,
+                          keyboardtype: TextInputType.visiblePassword,
+                          angle: 360,
+                          validator: (String? value) {
+                            if (value == null || value.trim().length == 0) {
+                              return "*Required";
+                            }
+                            if (value.trim().length < 6) {
+                              return "password should not be less than 6 characters";
+                            }
+                          },
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 208),
@@ -206,7 +176,8 @@ class _LoginSecreenState extends State<LoginSecreen> {
                         ),
                         Custom_Button(
                             text: 'Sing in',
-                            onpressed: () {
+                            onpressed: () async {
+                              await performLogin();
                               validator();
                             }),
                         Row(
@@ -245,5 +216,28 @@ class _LoginSecreenState extends State<LoginSecreen> {
         ],
       ),
     );
+  }
+
+  bool checkData() {
+    if (emailController.text.isNotEmpty && emailController.text.isNotEmpty) {
+      return true;
+    }
+    return false;
+  }
+
+  Future<void> login() async {
+    bool status = await UserApiController()
+        .login(email: emailController.text, password: passwordController.text);
+    if (status) {
+      print('Success');
+    } else {
+      print('Failed');
+    }
+  }
+
+  Future<void> performLogin() async {
+    if (checkData()) {
+      await login();
+    }
   }
 }

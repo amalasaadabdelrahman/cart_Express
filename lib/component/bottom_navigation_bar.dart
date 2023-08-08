@@ -1,3 +1,4 @@
+import 'package:cart_express/Secreens/auth/login_secreen.dart';
 import 'package:cart_express/Secreens/obout_us.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -262,9 +263,17 @@ class _ButtomNavigationBarState extends State<ButtomNavigationBar> {
                   ),
                 ),
                 ListTile(
-                  leading: Icon(
-                    Icons.logout,
-                    color: Color(0XFF1ABCBC),
+                  leading: InkWell(
+                    child: Icon(
+                      Icons.logout,
+                      color: Color(0XFF1ABCBC),
+                    ),
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginSecreen()));
+                    },
                   ),
                   title: Text(
                     'Logout',

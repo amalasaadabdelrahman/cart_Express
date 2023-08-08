@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../component/custom_button.dart';
-import '../component/custom_text_form_field.dart';
+
 import 'editprofile.dart';
 
 class Profile extends StatefulWidget {
@@ -142,6 +142,9 @@ class _ProfileState extends State<Profile> {
                       topRight: Radius.circular(24),
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 40.h,
                 ),
                 Custom_Button(
                   text: 'Edit Profile',

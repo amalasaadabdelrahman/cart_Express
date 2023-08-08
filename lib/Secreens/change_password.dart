@@ -1,9 +1,9 @@
+import 'package:cart_express/component/custom_textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../component/bottom_navigation_bar.dart';
 import '../component/custom_button.dart';
-import '../component/custom_text_form_field.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({Key? key}) : super(key: key);
@@ -92,100 +92,52 @@ class _ChangePasswordState extends State<ChangePassword> {
                               SizedBox(
                                 height: 50.h,
                               ),
-                              CustomTextFormField(
-                                textFormField: TextFormField(
-                                  controller: oldPaswordController,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                      fontSize: 15.sp,
-                                      color: Colors.black26,
-                                    ),
-                                    prefixIcon: Transform.rotate(
-                                      angle: 360,
-                                      child: Icon(
-                                        Icons.key,
-                                        color: Color(0XFF1ABCBC),
-                                      ),
-                                    ),
-                                    hintText: 'Old Password',
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide.none),
-                                  ),
-                                  validator: (String? value) {
-                                    if (value == null ||
-                                        value.trim().length == 0) {
-                                      return "*Required";
-                                    } else
-                                      return null;
-                                  },
-                                ),
+                              CustomTextField(
+                                controller: oldPaswordController,
+                                hintText: 'Old Password',
+                                prefixIcon: Icons.key,
+                                angle: 360,
+                                validator: (String? value) {
+                                  if (value == null ||
+                                      value.trim().length == 0) {
+                                    return "*Required";
+                                  } else
+                                    return null;
+                                },
+                                keyboardtype: TextInputType.visiblePassword,
                               ),
-                              SizedBox(
-                                height: 20.h,
+                              CustomTextField(
+                                controller: newPasswordController,
+                                hintText: 'New Password',
+                                prefixIcon: Icons.key,
+                                angle: 360,
+                                validator: (String? value) {
+                                  if (value == null ||
+                                      value.trim().length == 0) {
+                                    return "*Required";
+                                  } else
+                                    return null;
+                                },
+                                keyboardtype: TextInputType.visiblePassword,
                               ),
-                              CustomTextFormField(
-                                textFormField: TextFormField(
-                                  controller: newPasswordController,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                      fontSize: 15.sp,
-                                      color: Colors.black26,
-                                    ),
-                                    prefixIcon: Transform.rotate(
-                                      angle: 360,
-                                      child: Icon(
-                                        Icons.key,
-                                        color: Color(0XFF1ABCBC),
-                                      ),
-                                    ),
-                                    hintText: 'New Password',
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide.none),
-                                  ),
-                                  validator: (String? value) {
-                                    if (value == null ||
-                                        value.trim().length == 0) {
-                                      return "*Required";
-                                    } else
-                                      return null;
-                                  },
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20.h,
-                              ),
-                              CustomTextFormField(
-                                textFormField: TextFormField(
-                                  controller: confirmPaswordController,
-                                  decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                      fontSize: 15.sp,
-                                      color: Colors.black26,
-                                    ),
-                                    prefixIcon: Transform.rotate(
-                                      angle: 360,
-                                      child: Icon(
-                                        Icons.key,
-                                        color: Color(0XFF1ABCBC),
-                                      ),
-                                    ),
-                                    hintText: 'Confirm Password',
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide.none),
-                                  ),
-                                  validator: (String? value) {
-                                    if (value == null ||
-                                        value.trim().length == 0) {
-                                      return "*Required";
-                                    }
-                                    if (confirmPaswordController.text !=
-                                        newPasswordController.text) {
-                                      return "error password";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                ),
+                              CustomTextField(
+                                controller: confirmPaswordController,
+                                hintText: 'Confirm Password',
+                                prefixIcon: Icons.key,
+                                angle: 360,
+                                keyboardtype: TextInputType.visiblePassword,
+                                validator: (String? value) {
+                                  if (value == null ||
+                                      value.trim().length == 0) {
+                                    return "*Required";
+                                  }
+                                  if (confirmPaswordController.text !=
+                                      newPasswordController.text) {
+                                    return "error password";
+                                  } else {
+                                    return null;
+                                  }
+                                },
                               ),
                               Custom_Button(
                                   text: 'Change',

@@ -1,4 +1,4 @@
-import 'package:cart_express/Secreens/login_secreen.dart';
+import 'package:cart_express/Secreens/auth/login_secreen.dart';
 import 'package:cart_express/component/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

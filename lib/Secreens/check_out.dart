@@ -1,3 +1,4 @@
+import 'package:cart_express/component/custom_textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../component/bottom_navigation_bar.dart';
@@ -40,6 +41,9 @@ class _CheckOutState extends State<CheckOut> {
                         color: Colors.grey,
                       ),
                       textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 25.h,
                     ),
                     CustomCartButton(
                       text: 'Ok',
@@ -270,6 +274,9 @@ class _CheckOutState extends State<CheckOut> {
                               )
                             ],
                           ),
+                          SizedBox(
+                            height: 25.h,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -304,6 +311,9 @@ class _CheckOutState extends State<CheckOut> {
                                                   ),
                                                   textAlign: TextAlign.center,
                                                 ),
+                                                SizedBox(
+                                                  height: 25,
+                                                ),
                                                 CustomCartButton(
                                                   text: 'Got Home',
                                                   onPressed: () {
@@ -334,80 +344,60 @@ class _CheckOutState extends State<CheckOut> {
                                           child: Container(
                                             width: 270.w,
                                             height: 250.h,
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 50.0,
-                                                  left: 20,
-                                                  right: 20),
+                                            child: Form(
+                                              key: _key,
                                               child: Column(
                                                 children: [
-                                                  Text(
-                                                    'Discount code ',
-                                                    style: TextStyle(
-                                                        fontSize: 20.sp,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color:
-                                                            Color(0XFFAECB1B)),
-                                                  ),
-                                                  Text(
-                                                    'Please enter a valid code to get a discount .',
-                                                    style: TextStyle(
-                                                        color: Colors.grey,
-                                                        fontSize: 12.sp),
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                  Container(
-                                                    width: double.infinity.w,
-                                                    height: 40.h,
-                                                    margin: EdgeInsets.only(
-                                                        top: 20, bottom: 8),
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        topRight:
-                                                            Radius.circular(15),
-                                                        bottomLeft:
-                                                            Radius.circular(15),
-                                                      ),
-                                                      border: Border.all(
-                                                        color:
-                                                            Color(0XFF1ABCBC),
-                                                      ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 25.0,
+                                                            bottom: 5),
+                                                    child: Text(
+                                                      'Discount code ',
+                                                      style: TextStyle(
+                                                          fontSize: 20.sp,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color: Color(
+                                                              0XFFAECB1B)),
                                                     ),
-                                                    child: Form(
-                                                      key: _key,
-                                                      child: TextFormField(
-                                                        controller: controller,
-                                                        decoration:
-                                                            InputDecoration(
-                                                          hintText:
-                                                              'Discount code',
-                                                          prefixIcon: Icon(
-                                                            Icons
-                                                                .qr_code_2_rounded,
-                                                            color: Color(
-                                                                0XFF1ABCBC),
-                                                          ),
-                                                          border:
-                                                              InputBorder.none,
-                                                        ),
-                                                        validator:
-                                                            (String? value) {
-                                                          if (value == null ||
-                                                              value
-                                                                      .trim()
-                                                                      .length ==
-                                                                  0) {
-                                                            return "*Required";
-                                                          } else if (value !=
-                                                              '1234') {
-                                                            return "Discount code is not correct";
-                                                          } else
-                                                            return null;
-                                                        },
-                                                      ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 60.0,
+                                                            right: 60,
+                                                            bottom: 20),
+                                                    child: Text(
+                                                      'Please enter a valid code to get a discount .',
+                                                      style: TextStyle(
+                                                          color: Colors.grey,
+                                                          fontSize: 12.sp),
+                                                      textAlign:
+                                                          TextAlign.center,
                                                     ),
+                                                  ),
+                                                  CustomTextField(
+                                                    controller: controller,
+                                                    hintText: 'Discount code',
+                                                    prefixIcon: Icons.qr_code,
+                                                    keyboardtype:
+                                                        TextInputType.text,
+                                                    validator: (String? value) {
+                                                      if (value == null ||
+                                                          value.trim().length ==
+                                                              0) {
+                                                        return "*Required";
+                                                      } else if (value !=
+                                                          '1234') {
+                                                        return "Discount code is not correct";
+                                                      } else
+                                                        return null;
+                                                    },
+                                                  ),
+                                                  SizedBox(
+                                                    height: 25.h,
                                                   ),
                                                   CustomCartButton(
                                                       text: 'Check',

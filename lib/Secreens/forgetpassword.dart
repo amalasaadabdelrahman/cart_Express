@@ -1,8 +1,9 @@
-import 'package:cart_express/Secreens/login_secreen.dart';
+import 'package:cart_express/Secreens/auth/login_secreen.dart';
+import 'package:cart_express/component/custom_textformfield.dart';
 import 'package:flutter/material.dart';
 
 import '../component/custom_button.dart';
-import '../component/custom_text_form_field.dart';
+
 import 'home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -111,35 +112,19 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                         SizedBox(
                           height: 50.h,
                         ),
-                        CustomTextFormField(
-                          textFormField: TextFormField(
-                            keyboardType: TextInputType.visiblePassword,
-                            controller: passwordController,
-                            decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontSize: 15.sp,
-                                color: Colors.black26,
-                              ),
-                              prefixIcon: Transform.rotate(
-                                angle: 360,
-                                child: Icon(
-                                  Icons.key,
-                                  color: Color(0XFF1ABCBC),
-                                ),
-                              ),
-                              hintText: 'password',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                            ),
-                            validator: (String? value) {
-                              if (value == null || value.trim().length == 0) {
-                                return "*Required";
-                              }
-                              if (value.length < 6) {
-                                return "password should not be less than 6 characters";
-                              }
-                            },
-                          ),
+                        CustomTextField(
+                          controller: passwordController,
+                          hintText: 'Password',
+                          prefixIcon: Icons.key,
+                          angle: 360,
+                          validator: (String? value) {
+                            if (value == null || value.trim().length == 0) {
+                              return "*Required";
+                            }
+                            if (value.length < 6) {
+                              return "password should not be less than 6 characters";
+                            }
+                          },
                         ),
                         Custom_Button(
                             text: 'Resend',

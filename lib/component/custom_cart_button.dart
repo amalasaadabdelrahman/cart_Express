@@ -19,7 +19,6 @@ class _CustomCartButtonState extends State<CustomCartButton> {
         clipBehavior: Clip.antiAlias,
         width: 130.w,
         height: 40.h,
-        margin: EdgeInsets.only(top: 35),
         decoration: BoxDecoration(
           borderRadius: BorderRadiusDirectional.only(
             topEnd: Radius.circular(23),

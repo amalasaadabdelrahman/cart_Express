@@ -1,6 +1,4 @@
 import 'package:cart_express/Secreens/search.dart';
-import 'package:cart_express/component/custom_button.dart';
-import 'package:cart_express/constants/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -42,6 +40,12 @@ class _HomeState extends State<Home> {
   ];
   int current = 0;
   int count = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,54 +115,53 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: [
                   SizedBox(
-                    width: double.infinity.w,
-                    height: 60.h,
-                    child: ListView.builder(
-                        physics: BouncingScrollPhysics(),
-                        itemCount: items.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                current = index;
-                              });
-                            },
-                            child: AnimatedContainer(
-                              width: current == index ? 130.w : 140.w,
-                              height: 10.h,
-                              margin: EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.1),
-                                    spreadRadius: 2,
-                                    blurRadius: 3,
-                                    offset: Offset(
-                                        0, 3), // changes position of shadow
-                                  ),
-                                ],
-                                color: current == index
-                                    ? Color(0xFF1ABCBC)
-                                    : Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              duration: Duration(milliseconds: 300),
-                              child: Center(
-                                child: Text(
-                                  items[index],
-                                  style: TextStyle(
-                                    color: current == index
-                                        ? Colors.white
-                                        : Color(0xFF1ABCBC),
-                                    fontSize: 15,
+                      width: double.infinity.w,
+                      height: 60.h,
+                      child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          itemCount: items.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  current = index;
+                                });
+                              },
+                              child: AnimatedContainer(
+                                width: current == index ? 130.w : 140.w,
+                                height: 10.h,
+                                margin: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.1),
+                                      spreadRadius: 2,
+                                      blurRadius: 3,
+                                      offset: Offset(
+                                          0, 3), // changes position of shadow
+                                    ),
+                                  ],
+                                  color: current == index
+                                      ? Color(0xFF1ABCBC)
+                                      : Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                duration: Duration(milliseconds: 300),
+                                child: Center(
+                                  child: Text(
+                                    items[index],
+                                    style: TextStyle(
+                                      color: current == index
+                                          ? Colors.white
+                                          : Color(0xFF1ABCBC),
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        }),
-                  ),
+                            );
+                          })),
                   current == 0
                       ? Expanded(
                           flex: 1,

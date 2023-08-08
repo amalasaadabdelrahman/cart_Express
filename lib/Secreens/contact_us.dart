@@ -1,10 +1,10 @@
 import 'package:cart_express/component/custom_cart_button.dart';
+import 'package:cart_express/component/custom_textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../component/bottom_navigation_bar.dart';
 import '../component/custom_button.dart';
-import '../component/custom_text_form_field.dart';
 
 class ContactUs extends StatefulWidget {
   const ContactUs({Key? key}) : super(key: key);
@@ -198,105 +198,57 @@ class _ContactUsState extends State<ContactUs> {
                         SizedBox(
                           height: 30.h,
                         ),
-                        CustomTextFormField(
-                          textFormField: TextFormField(
-                            controller: userNameController,
-                            decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontSize: 15.sp,
-                                color: Colors.black26,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.person,
-                                color: Color(0XFF1ABCBC),
-                              ),
-                              hintText: 'User Name',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                            ),
-                            validator: (String? value) {
-                              if (value == null || value.trim().length == 0) {
-                                return "*Required";
-                              } else if (value.trim().length < 3) {
-                                return "Name should not be less than 3 characters";
-                              } else
-                                return null;
-                            },
-                          ),
+                        CustomTextField(
+                          controller: userNameController,
+                          hintText: 'User Name',
+                          prefixIcon: Icons.person,
+                          keyboardtype: TextInputType.text,
+                          validator: (String? value) {
+                            if (value == null || value.trim().length == 0) {
+                              return "*Required";
+                            } else if (value.trim().length < 3) {
+                              return "Name should not be less than 3 characters";
+                            } else
+                              return null;
+                          },
                         ),
-                        SizedBox(
-                          height: 18.h,
+                        CustomTextField(
+                          controller: emailController,
+                          hintText: 'Email',
+                          prefixIcon: Icons.email,
+                          keyboardtype: TextInputType.emailAddress,
+                          validator: (String? value) {
+                            if (value == null || value.trim().length == 0) {
+                              return "*Required";
+                            }
+                            if (!RegExp(
+                                    r"^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'*')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])")
+                                .hasMatch(value)) {
+                              return "Invalid Email Address";
+                            } else
+                              return null;
+                          },
                         ),
-                        CustomTextFormField(
-                          textFormField: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            controller: emailController,
-                            decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontSize: 15.sp,
-                                color: Colors.black26,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.email_outlined,
-                                color: Color(0XFF1ABCBC),
-                              ),
-                              hintText: 'Email',
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none),
-                            ),
-                            validator: (String? value) {
-                              if (value == null || value.trim().length == 0) {
-                                return "*Required";
-                              }
-                              if (!RegExp(
-                                      r"^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'*')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])")
-                                  .hasMatch(value)) {
-                                return "Invalid Email Address";
-                              } else
-                                return null;
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: 18.h,
-                        ),
-                        CustomTextFormField(
-                          textFormField: TextFormField(
-                            keyboardType: TextInputType.number,
-                            controller: phoneNumberController,
-                            decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                fontSize: 15.sp,
-                                color: Colors.black26,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.phone,
-                                color: Color(0XFF1ABCBC),
-                              ),
-                              hintText: 'Phone Number',
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
-                            validator: (String? value) {
-                              if (value == null || value.trim().length == 0) {
-                                return "*Required";
-                              }
-                              if (value.length < 10) {
-                                return "phone number should not be less than 10 digits";
-                              }
-                              if (!RegExp(
-                                      r"^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$")
-                                  .hasMatch(value)) {
-                                return "Invalid phone number";
-                              } else {
-                                return null;
-                              }
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: 18.h,
+                        CustomTextField(
+                          controller: phoneNumberController,
+                          hintText: 'Phone Number',
+                          prefixIcon: Icons.phone,
+                          validator: (String? value) {
+                            if (value == null || value.trim().length == 0) {
+                              return "*Required";
+                            }
+                            if (value.length < 10) {
+                              return "phone number should not be less than 10 digits";
+                            }
+                            if (!RegExp(
+                                    r"^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$")
+                                .hasMatch(value)) {
+                              return "Invalid phone number";
+                            } else {
+                              return null;
+                            }
+                          },
+                          keyboardtype: TextInputType.number,
                         ),
                         Container(
                           width: 280.w,
@@ -328,7 +280,7 @@ class _ContactUsState extends State<ContactUs> {
                                 ),
                               ),
                               SizedBox(
-                                width: 100.w,
+                                width: 99.w,
                               ),
                               IconButton(
                                 onPressed: () {},
@@ -375,6 +327,9 @@ class _ContactUsState extends State<ContactUs> {
                               ),
                             ],
                           ),
+                        ),
+                        SizedBox(
+                          height: 15.h,
                         ),
                         CustomCartButton(
                             text: 'Send',

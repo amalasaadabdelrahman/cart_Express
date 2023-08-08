@@ -108,7 +108,7 @@ class _ChooseCityState extends State<ChooseCity> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Cities(),
+                            builder: (context) => AllCitiy(),
                           ),
                         );
                       },
@@ -120,6 +120,9 @@ class _ChooseCityState extends State<ChooseCity> {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 25.h,
               ),
               Custom_Button(
                 text: 'OK',

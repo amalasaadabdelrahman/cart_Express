@@ -1,6 +1,10 @@
 import 'package:cart_express/Secreens/choose_city.dart';
+import 'package:cart_express/prefs/user_preferences_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../component/bottom_navigation_bar.dart';
+import '../models/setting.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -17,15 +21,24 @@ class _SplashState extends State<Splash> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(Duration(milliseconds: 2500), () {});
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ChooseCity(),
-      ),
-    );
+    await Future.delayed(Duration(seconds: 3), () {
+      UserPrefererencesController().loggedIn == 'active'
+          ? Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ButtomNavigationBar(),
+              ),
+            )
+          : Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChooseCity(),
+              ),
+            );
+    });
   }
 
+  late Future<Settings> setting;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

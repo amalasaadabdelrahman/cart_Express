@@ -1,25 +1,28 @@
-import 'dart:convert';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cart_express/constants/const.dart';
+import 'package:cart_express/models/translations.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../api/controller/cities_api_controller.dart';
+import '../models/base_response.dart';
+import '../models/cities.dart';
 import 'choose_city.dart';
 
-class Cities extends StatefulWidget {
-  const Cities({Key? key}) : super(key: key);
+class AllCitiy extends StatefulWidget {
+  const AllCitiy({Key? key}) : super(key: key);
 
   @override
-  State<Cities> createState() => _CitiesState();
+  State<AllCitiy> createState() => _AllCitiyState();
 }
 
-class _CitiesState extends State<Cities> {
-  Future<http.Response> fetchAlbum() async {
-    return await http
-        .get(Uri.parse('https://sallah.hexacit.com/api/getCities'));
-  }
-
+class _AllCitiyState extends State<AllCitiy> {
+  late Future<BaseResponse> baseResponse;
+  List<Cities>? all = [];
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
+    baseResponse = ApiCitiesController().getCities();
   }
 
   @override
@@ -50,36 +53,74 @@ class _CitiesState extends State<Cities> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: ListView.separated(
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: Icon(
-                  Icons.location_city,
+        child: FutureBuilder<BaseResponse>(
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(
                   color: Color(0XFF1ABCBC),
                 ),
-                title: Text(
-                  '',
-                  style:
-                      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
-                ),
-                subtitle: Text(''),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                      10.0), // Set the border radius of the ListTile
-                  side: BorderSide(
-                    color: Color(
-                        0XFF1ABCBC), // Set the border color of the ListTile
-                    width: 2.0.w, // Set the border width of the ListTile
+              );
+            } else if (snapshot.hasData) {
+              return InkWell(
+                child: ListView.separated(
+                    physics: BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      all = snapshot.data!.cities;
+                      List<Translations>? translation =
+                          all![index].translations;
+                      String? englishName = translation![0].name;
+                      String? arabicName = translation[1].name;
+                      return ListTile(
+                        leading: Icon(
+                          Icons.location_city,
+                          color: Color(0XFF1ABCBC),
+                        ),
+                        title: Text(
+                          englishName!,
+                        ),
+                        subtitle: Text(arabicName!),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              10.0), // Set the border radius of the ListTile
+                          side: BorderSide(
+                            color: Color(
+                                0XFF1ABCBC), // Set the border color of the ListTile
+                            width:
+                                2.0.w, // Set the border width of the ListTile
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        height: 18.h,
+                      );
+                    },
+                    itemCount: all!.length),
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => ChooseCity()));
+                },
+              );
+            } else {
+              return Column(
+                children: [
+                  Icon(
+                    Icons.warning,
+                    size: 80,
+                    color: Color(0XFF1ABCBC),
                   ),
-                ),
+                  Text(
+                    'No Data',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  )
+                ],
               );
-            },
-            separatorBuilder: (context, index) {
-              return SizedBox(
-                height: 18.h,
-              );
-            },
-            itemCount: 10),
+            }
+          },
+          future: baseResponse,
+        ),
       ),
     );
   }
