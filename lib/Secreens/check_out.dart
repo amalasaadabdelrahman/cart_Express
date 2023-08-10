@@ -1,7 +1,7 @@
 import 'package:cart_express/component/custom_textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../component/bottom_navigation_bar.dart';
+import 'home.dart';
 import '../component/custom_cart_button.dart';
 import '../component/custom_container.dart';
 import 'citities.dart';
@@ -82,9 +82,7 @@ class _CheckOutState extends State<CheckOut> {
           leading: IconButton(
             onPressed: () {
               Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ButtomNavigationBar()));
+                  context, MaterialPageRoute(builder: (context) => Home()));
             },
             icon: Icon(Icons.arrow_back_ios),
           ),
@@ -320,8 +318,9 @@ class _CheckOutState extends State<CheckOut> {
                                                     Navigator.pushReplacement(
                                                         context,
                                                         MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                ButtomNavigationBar()));
+                                                            builder:
+                                                                (context) =>
+                                                                    Home()));
                                                   },
                                                 )
                                               ],

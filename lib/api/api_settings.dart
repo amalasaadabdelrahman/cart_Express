@@ -4,4 +4,6 @@ class ApiSetting {
   static const CATIGORIES = _API_URL + 'getCategories';
   static const SETTINGS = _API_URL + 'getSetting';
   static const LOGIN = _API_URL + 'login';
+  static const LOGOUT = _API_URL + 'logout';
+  static const REGISTER = _API_URL + 'signUp';
 }

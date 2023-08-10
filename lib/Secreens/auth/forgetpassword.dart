@@ -2,9 +2,9 @@ import 'package:cart_express/Secreens/auth/login_secreen.dart';
 import 'package:cart_express/component/custom_textformfield.dart';
 import 'package:flutter/material.dart';
 
-import '../component/custom_button.dart';
+import '../../component/custom_button.dart';
 
-import 'home.dart';
+import '../category.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgetPassword extends StatefulWidget {

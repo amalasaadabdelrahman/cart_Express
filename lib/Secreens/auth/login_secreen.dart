@@ -1,12 +1,13 @@
-import 'package:cart_express/Secreens/singup_screen.dart';
+import 'package:cart_express/Secreens/auth/singup_screen.dart';
+import 'package:cart_express/Secreens/utils/helpers.dart';
 import 'package:cart_express/component/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../api/controller/user_api_controller.dart';
-import '../../component/bottom_navigation_bar.dart';
-import '../../component/custom_textformfield.dart';
-import '../forgetpassword.dart';
 import '../home.dart';
+import '../../component/custom_textformfield.dart';
+import 'forgetpassword.dart';
+import '../category.dart';
 
 class LoginSecreen extends StatefulWidget {
   const LoginSecreen({Key? key}) : super(key: key);
@@ -15,36 +16,10 @@ class LoginSecreen extends StatefulWidget {
   State<LoginSecreen> createState() => _LoginSecreenState();
 }
 
-class _LoginSecreenState extends State<LoginSecreen> {
+class _LoginSecreenState extends State<LoginSecreen> with Helpers {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  validator() {
-    if (_formKey.currentState != null && _formKey.currentState!.validate()) {
-      print('validated');
-      emailController.text = "";
-      passwordController.text = "";
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Logged in successfully'),
-          backgroundColor: Color(0XFF1ABCBC),
-        ),
-      );
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => ButtomNavigationBar()));
-    } else {
-      print('not validated');
-      emailController.text = "";
-      passwordController.text = "";
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Incorrect email or password'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,7 +153,6 @@ class _LoginSecreenState extends State<LoginSecreen> {
                             text: 'Sing in',
                             onpressed: () async {
                               await performLogin();
-                              validator();
                             }),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -219,24 +193,35 @@ class _LoginSecreenState extends State<LoginSecreen> {
   }
 
   bool checkData() {
-    if (emailController.text.isNotEmpty && emailController.text.isNotEmpty) {
+    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       return true;
     }
     return false;
   }
 
   Future<void> login() async {
-    bool status = await UserApiController()
-        .login(email: emailController.text, password: passwordController.text);
+    bool status = await UserApiController().login(
+        email: emailController.text,
+        password: passwordController.text,
+        context: context);
     if (status) {
-      print('Success');
+      showSnackBar(
+        context: context,
+        message: 'Logged in successfully',
+      );
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Home()));
     } else {
+      showSnackBar(
+          context: context, message: 'Login failed ,try again', error: true);
       print('Failed');
     }
   }
 
   Future<void> performLogin() async {
-    if (checkData()) {
+    if (_formKey.currentState != null &&
+        _formKey.currentState!.validate() &&
+        checkData()) {
       await login();
     }
   }

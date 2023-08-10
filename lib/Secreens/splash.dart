@@ -3,7 +3,7 @@ import 'package:cart_express/prefs/user_preferences_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../component/bottom_navigation_bar.dart';
+import 'home.dart';
 import '../models/setting.dart';
 
 class Splash extends StatefulWidget {
@@ -26,7 +26,7 @@ class _SplashState extends State<Splash> {
           ? Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => ButtomNavigationBar(),
+                builder: (context) => Home(),
               ),
             )
           : Navigator.pushReplacement(

@@ -1,522 +1,350 @@
-import 'package:cart_express/Secreens/search.dart';
+import 'package:cart_express/Secreens/auth/login_secreen.dart';
+import 'package:cart_express/Secreens/obout_us.dart';
+import 'package:cart_express/Secreens/utils/helpers.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'cart.dart';
+import 'change_password.dart';
+import 'contact_us.dart';
+import 'category.dart';
+import 'my_order.dart';
+import 'terms.dart';
+import 'faqs.dart';
+import 'privacy.dart';
+import 'offers.dart';
+import 'profile.dart';
+import '../api/controller/user_api_controller.dart';
+import '../constants/const.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  // ButtomNavigationBar({});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
-  List<String> items = [
-    '🌳 Vegetables',
-    '🍇 Fruits',
-    '🥩 Meat',
-    '🌿 Papers',
+class _HomeState extends State<Home> with Helpers {
+  int _selectedIndex = index;
+  final List<Widget> _pages = [
+    category(),
+    Profile(),
+    Offers(),
+    Cart(),
   ];
-  List<IconData> icons = [
-    Icons.home,
-    Icons.person,
-    Icons.local_offer_outlined,
-    Icons.shopping_cart_outlined
-  ];
-  List<AssetImage> images = [
-    AssetImage('images/images/apple.png'),
-    AssetImage('images/images/banana.png'),
-    AssetImage('images/images/orange.png'),
-    AssetImage('images/images/Cherry.png'),
-    AssetImage('images/images/Cherry.png'),
-    AssetImage('images/images/Cherry.png'),
-  ];
-  List<String> fruits = [
-    'Apple',
-    'Banana',
-    'Orange',
-    'Cherry',
-    'Cherry',
-    'Cherry',
-  ];
-  int current = 0;
-  int count = 0;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    //   statusBarColor: Colors.white, // Replace with your app bar color
+    //   statusBarIconBrightness:
+    //       Brightness.light, // Set the status bar icons to be light-colored
+    // ));
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            setState(() {
-              Scaffold.of(context).openDrawer();
-            });
-          },
-          icon: Icon(
-            Icons.menu,
-            color: Color(0XFF1ABCBC).withOpacity(0.5),
-          ),
-        ),
-        title: Text(
-          'Home',
-          style: TextStyle(
-            fontSize: 20.sp,
-            color: Color(0XFF1ABCBC),
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          Container(
-            width: 90.w,
-            margin: EdgeInsets.symmetric(horizontal: 17, vertical: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(14),
-              ),
-              color: Colors.grey.withOpacity(0.1),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 50),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Search()));
-                },
-                icon: Icon(
-                  Icons.search,
-                  color: Color(0XFF1ABCBC).withOpacity(0.5),
-                  size: 30,
+        drawer: Drawer(
+          elevation: 0,
+          width: 325.w,
+          child: SafeArea(
+            child: Column(
+              children: [
+                Transform.translate(
+                  offset: Offset(-150, 0),
+                  child: Image.asset(
+                    'images/images/menu.png',
+                    color: Color(0XFF1ABCBC),
+                  ),
                 ),
-              ),
+                Text(
+                  'Menu',
+                  style: TextStyle(fontSize: 20.sp, color: Color(0XFF1ABCBC)),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.cleaning_services_outlined,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'My order',
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                  trailing: InkWell(
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
+                    onTap: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => MyOrder()));
+                    },
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.language,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'Change Languages',
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_back_ios,
+                    textDirection: TextDirection.rtl,
+                    color: Colors.black,
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.lock_clock_outlined,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'Change Password',
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                  trailing: InkWell(
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChangePassword()));
+                    },
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.location_on_outlined,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'Change Country',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_back_ios,
+                    textDirection: TextDirection.rtl,
+                    color: Colors.black,
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.info_outline_rounded,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'About us',
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                  trailing: InkWell(
+                    onTap: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => AboutUS()));
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.phone,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'Contact us',
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                  trailing: InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ContactUs()));
+                      });
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.app_blocking_outlined,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'Share App',
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_back_ios,
+                    textDirection: TextDirection.rtl,
+                    color: Colors.black,
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.help_outline,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'FQA',
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                  trailing: InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => FAQs()));
+                      });
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.edit_note,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'Term of use',
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                  trailing: InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Terms()));
+                      });
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.document_scanner_outlined,
+                    color: Color(0XFF1ABCBC),
+                  ),
+                  title: Text(
+                    'Privacy policy',
+                    style: TextStyle(fontSize: 15.sp),
+                  ),
+                  trailing: InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Privacy()));
+                      });
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                InkWell(
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.logout,
+                      color: Color(0XFF1ABCBC),
+                    ),
+                    title: Text(
+                      'Logout',
+                      style: TextStyle(fontSize: 15.sp),
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_back_ios,
+                      textDirection: TextDirection.rtl,
+                      color: Colors.black,
+                    ),
+                  ),
+                  onTap: () async {
+                    await logout();
+                  },
+                ),
+                Image(image: AssetImage('images/images/Component 8 – 1.png'))
+              ],
             ),
-          )
-        ],
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('images/images/background.png'),
-            fit: BoxFit.cover,
           ),
         ),
-        child: SafeArea(
+        body: Container(
+          child: _pages[_selectedIndex],
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/images/background.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        bottomNavigationBar: Container(
           child: Padding(
-            padding: const EdgeInsets.only(top: 27),
-            child: Container(
-              width: double.infinity.w,
-              height: double.infinity.h,
-              margin: EdgeInsets.only(top: 5),
-              child: Column(
-                children: [
-                  SizedBox(
-                      width: double.infinity.w,
-                      height: 60.h,
-                      child: ListView.builder(
-                          physics: BouncingScrollPhysics(),
-                          itemCount: items.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  current = index;
-                                });
-                              },
-                              child: AnimatedContainer(
-                                width: current == index ? 130.w : 140.w,
-                                height: 10.h,
-                                margin: EdgeInsets.all(5),
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.1),
-                                      spreadRadius: 2,
-                                      blurRadius: 3,
-                                      offset: Offset(
-                                          0, 3), // changes position of shadow
-                                    ),
-                                  ],
-                                  color: current == index
-                                      ? Color(0xFF1ABCBC)
-                                      : Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                duration: Duration(milliseconds: 300),
-                                child: Center(
-                                  child: Text(
-                                    items[index],
-                                    style: TextStyle(
-                                      color: current == index
-                                          ? Colors.white
-                                          : Color(0xFF1ABCBC),
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          })),
-                  current == 0
-                      ? Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: double.infinity.w,
-                            margin: EdgeInsets.only(top: 25),
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: GridView.builder(
-                              itemCount: 6,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 160 / 200,
-                              ),
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  margin: EdgeInsets.all(5),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      bottomLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                          child: Image(image: images[index])),
-                                      Text(
-                                        fruits[index],
-                                        style: TextStyle(
-                                            fontSize: 13.sp,
-                                            color: Colors.grey),
-                                      ),
-                                      Text(
-                                        '5.00 \$ /K',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0XFF1ABCBC)),
-                                      ),
-                                      Container(
-                                        clipBehavior: Clip.antiAlias,
-                                        width: 150.w,
-                                        height: 40.h,
-                                        margin: EdgeInsets.only(
-                                          top: 40,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadiusDirectional.only(
-                                            topEnd: Radius.circular(11),
-                                            bottomStart: Radius.circular(11),
-                                          ),
-                                        ),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateColor.resolveWith(
-                                              (states) => Color(0XFF1ABCBC),
-                                            ),
-                                          ),
-                                          child: Text(
-                                            'Add to cart',
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              count += 1;
-                                            });
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        )
-                      : SizedBox(),
-                  current == 1
-                      ? Expanded(
-                          child: Container(
-                            width: double.infinity.w,
-                            margin: EdgeInsets.only(top: 25),
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: GridView.builder(
-                              itemCount: 6,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 160.h / 200.w,
-                              ),
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  margin: EdgeInsets.all(5),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      bottomLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                          child: Image(image: images[index])),
-                                      Text(
-                                        fruits[index],
-                                        style: TextStyle(
-                                            fontSize: 13.sp,
-                                            color: Colors.grey),
-                                      ),
-                                      Text(
-                                        '5.00 \$ /K',
-                                        style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0XFF1ABCBC)),
-                                      ),
-                                      Container(
-                                        clipBehavior: Clip.antiAlias,
-                                        width: 150.w,
-                                        height: 40.h,
-                                        margin: EdgeInsets.only(
-                                          top: 40,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadiusDirectional.only(
-                                            topEnd: Radius.circular(11),
-                                            bottomStart: Radius.circular(11),
-                                          ),
-                                        ),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateColor.resolveWith(
-                                              (states) => Color(0XFF1ABCBC),
-                                            ),
-                                          ),
-                                          child: Text(
-                                            'Add to cart',
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              count += 1;
-                                            });
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        )
-                      : SizedBox(),
-                  current == 2
-                      ? Expanded(
-                          child: Container(
-                            width: double.infinity.w,
-                            margin: EdgeInsets.only(top: 25),
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: GridView.builder(
-                              itemCount: 6,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 160.h / 200.w,
-                              ),
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  margin: EdgeInsets.all(5),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      bottomLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                          child: Image(image: images[index])),
-                                      Text(
-                                        fruits[index],
-                                        style: TextStyle(
-                                            fontSize: 13.sp,
-                                            color: Colors.grey),
-                                      ),
-                                      Text(
-                                        '5.00 \$ /K',
-                                        style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0XFF1ABCBC)),
-                                      ),
-                                      Container(
-                                        clipBehavior: Clip.antiAlias,
-                                        width: 150.w,
-                                        height: 40.h,
-                                        margin: EdgeInsets.only(
-                                          top: 40,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadiusDirectional.only(
-                                            topEnd: Radius.circular(11),
-                                            bottomStart: Radius.circular(11),
-                                          ),
-                                        ),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateColor.resolveWith(
-                                              (states) => Color(0XFF1ABCBC),
-                                            ),
-                                          ),
-                                          child: Text(
-                                            'Add to cart',
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              count += 1;
-                                            });
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        )
-                      : SizedBox(),
-                  current == 3
-                      ? Expanded(
-                          child: Container(
-                            width: double.infinity.w,
-                            margin: EdgeInsets.only(top: 25),
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: GridView.builder(
-                              itemCount: 6,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 160.h / 200.w,
-                              ),
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  margin: EdgeInsets.all(5),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      bottomLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                          child: Image(image: images[index])),
-                                      Text(
-                                        fruits[index],
-                                        style: TextStyle(
-                                            fontSize: 13.sp,
-                                            color: Colors.grey),
-                                      ),
-                                      Text(
-                                        '5.00 \$ /K',
-                                        style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0XFF1ABCBC)),
-                                      ),
-                                      Container(
-                                        clipBehavior: Clip.antiAlias,
-                                        width: 150.w,
-                                        height: 40.h,
-                                        margin: EdgeInsets.only(
-                                          top: 40,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadiusDirectional.only(
-                                            topEnd: Radius.circular(11),
-                                            bottomStart: Radius.circular(11),
-                                          ),
-                                        ),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateColor.resolveWith(
-                                              (states) => Color(0XFF1ABCBC),
-                                            ),
-                                          ),
-                                          child: Text(
-                                            'Add to cart',
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              count += 1;
-                                            });
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        )
-                      : SizedBox(),
-                ],
-              ),
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: GNav(
+              gap: 8,
+              color: Colors.grey,
+              activeColor: Colors.white,
+              tabBackgroundColor: Color(0XFF1ABCBC),
+              padding: EdgeInsets.all(16),
+              onTabChange: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+              tabs: [
+                GButton(
+                  icon: Icons.home,
+                  text: 'Home',
+                ),
+                GButton(
+                  icon: Icons.person,
+                  text: 'profile',
+                ),
+                GButton(
+                  icon: Icons.local_offer_outlined,
+                  text: 'offers',
+                ),
+                GButton(
+                  icon: Icons.shopping_cart_outlined,
+                  text: 'Cart',
+                ),
+              ],
             ),
           ),
-        ),
-      ),
-    );
+        ));
+  }
+
+  Future<void> logout() async {
+    bool status = await UserApiController().logout();
+    if (status) {
+      showSnackBar(
+          context: context, message: 'Signed out successfully ', error: false);
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => LoginSecreen()));
+    } else {
+      showSnackBar(
+          context: context, message: 'logout failed , try again', error: true);
+    }
   }
 }

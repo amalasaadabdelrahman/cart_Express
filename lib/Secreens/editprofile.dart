@@ -1,7 +1,7 @@
 import 'package:cart_express/Secreens/profile.dart';
 import 'package:cart_express/component/custom_textformfield.dart';
 import 'package:flutter/material.dart';
-import '../component/bottom_navigation_bar.dart';
+import 'home.dart';
 import '../component/custom_button.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,10 +69,8 @@ class _EditProfileState extends State<EditProfile> {
                   padding: const EdgeInsets.only(top: 42.0),
                   child: IconButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ButtomNavigationBar()));
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => Home()));
                     },
                     icon: Icon(
                       Icons.arrow_back_ios,

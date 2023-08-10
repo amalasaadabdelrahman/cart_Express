@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../component/bottom_navigation_bar.dart';
+import 'home.dart';
 
 class Privacy extends StatefulWidget {
   const Privacy({super.key});
@@ -40,7 +40,7 @@ class _PrivacyState extends State<Privacy> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ButtomNavigationBar()));
+                                builder: (context) => Home()));
                       },
                     ),
                     SizedBox(width: 90.w),

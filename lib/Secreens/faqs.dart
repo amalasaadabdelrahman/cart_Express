@@ -2,7 +2,7 @@ import 'package:cart_express/models/faq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../component/bottom_navigation_bar.dart';
+import 'home.dart';
 
 class FAQs extends StatefulWidget {
   const FAQs({super.key});
@@ -62,10 +62,8 @@ class _FAQsState extends State<FAQs> {
                     InkWell(
                       child: Icon(Icons.arrow_back_ios),
                       onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ButtomNavigationBar()));
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Home()));
                       },
                     ),
                     SizedBox(width: 130.w),

@@ -1,11 +1,14 @@
 import 'package:cart_express/Secreens/auth/login_secreen.dart';
+import 'package:cart_express/Secreens/utils/helpers.dart';
 import 'package:cart_express/component/custom_textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../component/bottom_navigation_bar.dart';
-import '../component/custom_button.dart';
+import '../../api/controller/user_api_controller.dart';
+import '../home.dart';
+import '../../component/custom_button.dart';
 
-import 'home.dart';
+import '../category.dart';
+import '../welcome.dart';
 
 class SingUpScreen extends StatefulWidget {
   const SingUpScreen({Key? key}) : super(key: key);
@@ -14,34 +17,32 @@ class SingUpScreen extends StatefulWidget {
   State<SingUpScreen> createState() => _SingUpScreenState();
 }
 
-class _SingUpScreenState extends State<SingUpScreen> {
+class _SingUpScreenState extends State<SingUpScreen> with Helpers {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final userNameController = TextEditingController();
   final phoneNumberController = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool isChecked = false;
-  validator() {
-    if (_formKey.currentState != null &&
-        _formKey.currentState!.validate() &&
-        isChecked) {
-      print('validated');
-      emailController.text = "";
-      passwordController.text = "";
-      userNameController.text = "";
-      phoneNumberController.text = "";
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('You now have an account'),
-          backgroundColor: Color(0XFF1ABCBC),
-        ),
-      );
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => ButtomNavigationBar()));
-    } else {
-      print('Not validated');
-    }
-  }
+  // validator() {
+  //   {
+  //     print('validated');
+  //     emailController.text = "";
+  //     passwordController.text = "";
+  //     userNameController.text = "";
+  //     phoneNumberController.text = "";
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(
+  //         content: Text('You now have an account'),
+  //         backgroundColor: Color(0XFF1ABCBC),
+  //       ),
+  //     );
+  //     Navigator.pushReplacement(
+  //         context, MaterialPageRoute(builder: (context) => Home()));
+  //   } else {
+  //     print('Not validated');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -219,7 +220,8 @@ class _SingUpScreenState extends State<SingUpScreen> {
                         Custom_Button(
                             text: 'Sing up',
                             onpressed: () {
-                              validator();
+                              // validator();
+                              performRegister();
                             }),
                         SizedBox(
                           height: 50.h,
@@ -234,5 +236,46 @@ class _SingUpScreenState extends State<SingUpScreen> {
         ],
       ),
     );
+  }
+
+  bool checkData() {
+    if (emailController.text.isNotEmpty &&
+        passwordController.text.isNotEmpty &&
+        userNameController.text.isNotEmpty &&
+        phoneNumberController.text.isNotEmpty) {
+      return true;
+    }
+    // showSnackBar(context: context, message: 'Enter required data');
+    return false;
+  }
+
+  Future<void> register() async {
+    bool status = await UserApiController().register(
+      email: emailController.text,
+      password: passwordController.text,
+      name: userNameController.text,
+      mobile: phoneNumberController.text,
+      context: context,
+    );
+    if (status) {
+      print('Success');
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Welcome()));
+    } else {
+      showSnackBar(
+          context: context,
+          message: 'The account was not created successfully ,try again',
+          error: true);
+      print('Failed');
+    }
+  }
+
+  Future<void> performRegister() async {
+    if (_formKey.currentState != null &&
+        _formKey.currentState!.validate() &&
+        checkData() &&
+        isChecked) {
+      await register();
+    }
   }
 }

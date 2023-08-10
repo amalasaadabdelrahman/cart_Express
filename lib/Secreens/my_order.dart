@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../component/bottom_navigation_bar.dart';
+import 'home.dart';
 import '../component/custom_order.dart';
 
 class MyOrder extends StatefulWidget {
@@ -39,10 +39,8 @@ class _MyOrderState extends State<MyOrder> {
                     InkWell(
                       child: Icon(Icons.arrow_back_ios),
                       onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ButtomNavigationBar()));
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Home()));
                       },
                     ),
                     SizedBox(width: 110.w),

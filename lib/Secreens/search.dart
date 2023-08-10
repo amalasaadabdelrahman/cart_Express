@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../component/bottom_navigation_bar.dart';
+import 'home.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -69,8 +69,7 @@ class _SearchState extends State<Search> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        ButtomNavigationBar()));
+                                    builder: (context) => Home()));
                           });
                           // Handle cancel button press
                         },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../component/bottom_navigation_bar.dart';
+import 'home.dart';
 
 class AboutUS extends StatefulWidget {
   const AboutUS({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _AboutUSState extends State<AboutUS> {
         leading: IconButton(
           onPressed: () {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => ButtomNavigationBar()));
+                MaterialPageRoute(builder: (context) => Home()));
           },
           icon: Icon(Icons.arrow_back_ios),
         ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'Secreens/order_detials.dart';
+import 'Secreens/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
