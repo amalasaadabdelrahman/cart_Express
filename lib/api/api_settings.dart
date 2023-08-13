@@ -6,4 +6,7 @@ class ApiSetting {
   static const LOGIN = _API_URL + 'login';
   static const LOGOUT = _API_URL + 'logout';
   static const REGISTER = _API_URL + 'signUp';
+  static const  category = _API_URL + 'category';
+  static const  allQ = _API_URL + 'allQ';
+
 }

@@ -23,12 +23,12 @@ class _categoryState extends State<category> {
     Icons.shopping_cart_outlined
   ];
   List<AssetImage> images = [
-    AssetImage('images/images/apple.png'),
-    AssetImage('images/images/banana.png'),
-    AssetImage('images/images/orange.png'),
-    AssetImage('images/images/Cherry.png'),
-    AssetImage('images/images/Cherry.png'),
-    AssetImage('images/images/Cherry.png'),
+    const AssetImage('images/images/apple.png'),
+    const AssetImage('images/images/banana.png'),
+    const AssetImage('images/images/orange.png'),
+    const AssetImage('images/images/Cherry.png'),
+    const AssetImage('images/images/Cherry.png'),
+    const AssetImage('images/images/Cherry.png'),
   ];
   List<String> fruits = [
     'Apple',
@@ -40,6 +40,7 @@ class _categoryState extends State<category> {
   ];
   int current = 0;
   int count = 0;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -60,23 +61,23 @@ class _categoryState extends State<category> {
           },
           icon: Icon(
             Icons.menu,
-            color: Color(0XFF1ABCBC).withOpacity(0.5),
+            color: const Color(0XFF1ABCBC).withOpacity(0.5),
           ),
         ),
         title: Text(
           'Home',
           style: TextStyle(
             fontSize: 20.sp,
-            color: Color(0XFF1ABCBC),
+            color: const Color(0XFF1ABCBC),
           ),
         ),
         centerTitle: true,
         actions: [
           Container(
             width: 90.w,
-            margin: EdgeInsets.symmetric(horizontal: 17, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 17, vertical: 10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(14),
               ),
               color: Colors.grey.withOpacity(0.1),
@@ -86,11 +87,11 @@ class _categoryState extends State<category> {
               child: IconButton(
                 onPressed: () {
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Search()));
+                      MaterialPageRoute(builder: (context) => const Search()));
                 },
                 icon: Icon(
                   Icons.search,
-                  color: Color(0XFF1ABCBC).withOpacity(0.5),
+                  color: const Color(0XFF1ABCBC).withOpacity(0.5),
                   size: 30,
                 ),
               ),
@@ -99,7 +100,7 @@ class _categoryState extends State<category> {
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('images/images/background.png'),
             fit: BoxFit.cover,
@@ -111,14 +112,14 @@ class _categoryState extends State<category> {
             child: Container(
               width: double.infinity.w,
               height: double.infinity.h,
-              margin: EdgeInsets.only(top: 5),
+              margin: const EdgeInsets.only(top: 5),
               child: Column(
                 children: [
                   SizedBox(
                       width: double.infinity.w,
                       height: 60.h,
                       child: ListView.builder(
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           itemCount: items.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
@@ -131,30 +132,30 @@ class _categoryState extends State<category> {
                               child: AnimatedContainer(
                                 width: current == index ? 130.w : 140.w,
                                 height: 10.h,
-                                margin: EdgeInsets.all(5),
+                                margin: const EdgeInsets.all(5),
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.grey.withOpacity(0.1),
                                       spreadRadius: 2,
                                       blurRadius: 3,
-                                      offset: Offset(
+                                      offset: const Offset(
                                           0, 3), // changes position of shadow
                                     ),
                                   ],
                                   color: current == index
-                                      ? Color(0xFF1ABCBC)
+                                      ? const Color(0xFF1ABCBC)
                                       : Colors.white,
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                duration: Duration(milliseconds: 300),
+                                duration: const Duration(milliseconds: 300),
                                 child: Center(
                                   child: Text(
                                     items[index],
                                     style: TextStyle(
                                       color: current == index
                                           ? Colors.white
-                                          : Color(0xFF1ABCBC),
+                                          : const Color(0xFF1ABCBC),
                                       fontSize: 15,
                                     ),
                                   ),
@@ -167,22 +168,22 @@ class _categoryState extends State<category> {
                           flex: 1,
                           child: Container(
                             width: double.infinity.w,
-                            margin: EdgeInsets.only(top: 25),
-                            decoration: BoxDecoration(
+                            margin: const EdgeInsets.only(top: 25),
+                            decoration: const BoxDecoration(
                               color: Colors.transparent,
                             ),
                             child: GridView.builder(
                               itemCount: 6,
                               gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 childAspectRatio: 160 / 200,
                               ),
                               itemBuilder: (context, index) {
                                 return Container(
-                                  margin: EdgeInsets.all(5),
+                                  margin: const EdgeInsets.all(5),
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(15),
@@ -202,7 +203,7 @@ class _categoryState extends State<category> {
                                             fontSize: 13.sp,
                                             color: Colors.grey),
                                       ),
-                                      Text(
+                                      const Text(
                                         '5.00 \$ /K',
                                         style: TextStyle(
                                             fontSize: 18,
@@ -213,10 +214,10 @@ class _categoryState extends State<category> {
                                         clipBehavior: Clip.antiAlias,
                                         width: 150.w,
                                         height: 40.h,
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                           top: 40,
                                         ),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           borderRadius:
                                               BorderRadiusDirectional.only(
                                             topEnd: Radius.circular(11),
@@ -227,10 +228,11 @@ class _categoryState extends State<category> {
                                           style: ButtonStyle(
                                             backgroundColor:
                                                 MaterialStateColor.resolveWith(
-                                              (states) => Color(0XFF1ABCBC),
+                                              (states) =>
+                                                  const Color(0XFF1ABCBC),
                                             ),
                                           ),
-                                          child: Text(
+                                          child: const Text(
                                             'Add to cart',
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
@@ -249,13 +251,13 @@ class _categoryState extends State<category> {
                             ),
                           ),
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                   current == 1
                       ? Expanded(
                           child: Container(
                             width: double.infinity.w,
-                            margin: EdgeInsets.only(top: 25),
-                            decoration: BoxDecoration(
+                            margin: const EdgeInsets.only(top: 25),
+                            decoration: const BoxDecoration(
                               color: Colors.transparent,
                             ),
                             child: GridView.builder(
@@ -267,9 +269,9 @@ class _categoryState extends State<category> {
                               ),
                               itemBuilder: (context, index) {
                                 return Container(
-                                  margin: EdgeInsets.all(5),
+                                  margin: const EdgeInsets.all(5),
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(15),
@@ -294,16 +296,16 @@ class _categoryState extends State<category> {
                                         style: TextStyle(
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.w700,
-                                            color: Color(0XFF1ABCBC)),
+                                            color: const Color(0XFF1ABCBC)),
                                       ),
                                       Container(
                                         clipBehavior: Clip.antiAlias,
                                         width: 150.w,
                                         height: 40.h,
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                           top: 40,
                                         ),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           borderRadius:
                                               BorderRadiusDirectional.only(
                                             topEnd: Radius.circular(11),
@@ -314,10 +316,11 @@ class _categoryState extends State<category> {
                                           style: ButtonStyle(
                                             backgroundColor:
                                                 MaterialStateColor.resolveWith(
-                                              (states) => Color(0XFF1ABCBC),
+                                              (states) =>
+                                                  const Color(0XFF1ABCBC),
                                             ),
                                           ),
-                                          child: Text(
+                                          child: const Text(
                                             'Add to cart',
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
@@ -336,13 +339,13 @@ class _categoryState extends State<category> {
                             ),
                           ),
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                   current == 2
                       ? Expanded(
                           child: Container(
                             width: double.infinity.w,
-                            margin: EdgeInsets.only(top: 25),
-                            decoration: BoxDecoration(
+                            margin: const EdgeInsets.only(top: 25),
+                            decoration: const BoxDecoration(
                               color: Colors.transparent,
                             ),
                             child: GridView.builder(
@@ -354,9 +357,9 @@ class _categoryState extends State<category> {
                               ),
                               itemBuilder: (context, index) {
                                 return Container(
-                                  margin: EdgeInsets.all(5),
+                                  margin: const EdgeInsets.all(5),
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(15),
@@ -381,16 +384,16 @@ class _categoryState extends State<category> {
                                         style: TextStyle(
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.w700,
-                                            color: Color(0XFF1ABCBC)),
+                                            color: const Color(0XFF1ABCBC)),
                                       ),
                                       Container(
                                         clipBehavior: Clip.antiAlias,
                                         width: 150.w,
                                         height: 40.h,
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                           top: 40,
                                         ),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           borderRadius:
                                               BorderRadiusDirectional.only(
                                             topEnd: Radius.circular(11),
@@ -401,10 +404,11 @@ class _categoryState extends State<category> {
                                           style: ButtonStyle(
                                             backgroundColor:
                                                 MaterialStateColor.resolveWith(
-                                              (states) => Color(0XFF1ABCBC),
+                                              (states) =>
+                                                  const Color(0XFF1ABCBC),
                                             ),
                                           ),
-                                          child: Text(
+                                          child: const Text(
                                             'Add to cart',
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
@@ -423,13 +427,13 @@ class _categoryState extends State<category> {
                             ),
                           ),
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                   current == 3
                       ? Expanded(
                           child: Container(
                             width: double.infinity.w,
-                            margin: EdgeInsets.only(top: 25),
-                            decoration: BoxDecoration(
+                            margin: const EdgeInsets.only(top: 25),
+                            decoration: const BoxDecoration(
                               color: Colors.transparent,
                             ),
                             child: GridView.builder(
@@ -441,9 +445,9 @@ class _categoryState extends State<category> {
                               ),
                               itemBuilder: (context, index) {
                                 return Container(
-                                  margin: EdgeInsets.all(5),
+                                  margin: const EdgeInsets.all(5),
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(15),
@@ -468,16 +472,16 @@ class _categoryState extends State<category> {
                                         style: TextStyle(
                                             fontSize: 18.sp,
                                             fontWeight: FontWeight.w700,
-                                            color: Color(0XFF1ABCBC)),
+                                            color: const Color(0XFF1ABCBC)),
                                       ),
                                       Container(
                                         clipBehavior: Clip.antiAlias,
                                         width: 150.w,
                                         height: 40.h,
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                           top: 40,
                                         ),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           borderRadius:
                                               BorderRadiusDirectional.only(
                                             topEnd: Radius.circular(11),
@@ -488,10 +492,11 @@ class _categoryState extends State<category> {
                                           style: ButtonStyle(
                                             backgroundColor:
                                                 MaterialStateColor.resolveWith(
-                                              (states) => Color(0XFF1ABCBC),
+                                              (states) =>
+                                                  const Color(0XFF1ABCBC),
                                             ),
                                           ),
-                                          child: Text(
+                                          child: const Text(
                                             'Add to cart',
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
@@ -510,7 +515,7 @@ class _categoryState extends State<category> {
                             ),
                           ),
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                 ],
               ),
             ),

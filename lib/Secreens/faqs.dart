@@ -2,6 +2,9 @@ import 'package:cart_express/models/faq.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../api/controller/allQ_controller.dart';
+import '../api/models/allQ.dart';
+import '../constants/const.dart';
 import 'home.dart';
 
 class FAQs extends StatefulWidget {
@@ -101,28 +104,65 @@ class _FAQsState extends State<FAQs> {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 25),
-                      child: Text(
-                        faq.question,
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.normal,
-                        ),
+                      child: FutureBuilder<List<Questions>>(
+                        future: AllQController().getallQ(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const CircularProgressIndicator();
+                          } else if (snapshot.hasData &&
+                              snapshot.data!.isNotEmpty) {
+                            return Text(
+                              snapshot.data![index].question,
+                              style: TextStyle(
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            );
+                          } else {
+                            return const Text(
+                              'No Data',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,
+                              ),
+                            );
+                          }
+                        },
                       ),
                     );
                   },
                   body: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: Text(
-                        faq.answer,
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
+                    child: FutureBuilder<List<Questions>>(
+                      future: AllQController().getallQ(), // Replace with your API call for answers
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const CircularProgressIndicator();
+                        } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                          return Align(
+                            alignment: AlignmentDirectional.centerStart,
+                            child: Text(
+                              snapshot.data![index].answer,
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          );
+                        } else {
+                          return const Text(
+                            'No Data',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                            ),
+                          );
+                        }
+                      },
                     ),
-                  ));
+                  ),
+              );
             }).toList(),
           ),
         ],
