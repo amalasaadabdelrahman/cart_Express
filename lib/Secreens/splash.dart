@@ -2,7 +2,7 @@ import 'package:cart_express/Secreens/choose_city.dart';
 import 'package:cart_express/prefs/user_preferences_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'dart:async';
 import 'home.dart';
 import '../models/setting.dart';
 

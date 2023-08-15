@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'dart:async';
 import '../models/user.dart';
 
 class UserPrefererencesController {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../api/controller/allQ_controller.dart';
-import '../api/models/allQ.dart';
+import '../models/allQ.dart';
 import '../constants/const.dart';
 import 'home.dart';
 
@@ -97,57 +97,26 @@ class _FAQsState extends State<FAQs> {
             },
             children: _faqs.map((Faq faq) {
               return ExpansionPanel(
-                  backgroundColor: Colors.white,
-                  canTapOnHeader: true,
-                  isExpanded: faq.isExpanded,
-                  headerBuilder: (context, isExpanded) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 25),
-                      child: FutureBuilder<List<Questions>>(
-                        future: AllQController().getallQ(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const CircularProgressIndicator();
-                          } else if (snapshot.hasData &&
-                              snapshot.data!.isNotEmpty) {
-                            return Text(
-                              snapshot.data![index].question,
-                              style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            );
-                          } else {
-                            return const Text(
-                              'No Data',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                    );
-                  },
-                  body: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                backgroundColor: Colors.white,
+                canTapOnHeader: true,
+                isExpanded: faq.isExpanded,
+                headerBuilder: (context, isExpanded) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 25),
                     child: FutureBuilder<List<Questions>>(
-                      future: AllQController().getallQ(), // Replace with your API call for answers
+                      future: AllQController().getallQ(),
                       builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
                           return const CircularProgressIndicator();
-                        } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-                          return Align(
-                            alignment: AlignmentDirectional.centerStart,
-                            child: Text(
-                              snapshot.data![index].answer,
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.normal,
-                              ),
+                        } else if (snapshot.hasData &&
+                            snapshot.data!.isNotEmpty) {
+                          return Text(
+                            snapshot.data![index].question,
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.normal,
                             ),
                           );
                         } else {
@@ -161,7 +130,40 @@ class _FAQsState extends State<FAQs> {
                         }
                       },
                     ),
+                  );
+                },
+                body: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: FutureBuilder<List<Questions>>(
+                    future: AllQController()
+                        .getallQ(), // Replace with your API call for answers
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      } else if (snapshot.hasData &&
+                          snapshot.data!.isNotEmpty) {
+                        return Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: Text(
+                            snapshot.data![index].answer,
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        );
+                      } else {
+                        return const Text(
+                          'No Data',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                          ),
+                        );
+                      }
+                    },
                   ),
+                ),
               );
             }).toList(),
           ),

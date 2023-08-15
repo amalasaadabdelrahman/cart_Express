@@ -8,6 +8,7 @@ import '../home.dart';
 import '../../component/custom_textformfield.dart';
 import 'forgetpassword.dart';
 import '../category.dart';
+import 'dart:async';
 
 class LoginSecreen extends StatefulWidget {
   const LoginSecreen({Key? key}) : super(key: key);
@@ -199,7 +200,7 @@ class _LoginSecreenState extends State<LoginSecreen> with Helpers {
     return false;
   }
 
-  Future<void> login() async {
+  FutureOr<void> login() async {
     bool status = await UserApiController().login(
         email: emailController.text,
         password: passwordController.text,
@@ -218,7 +219,7 @@ class _LoginSecreenState extends State<LoginSecreen> with Helpers {
     }
   }
 
-  Future<void> performLogin() async {
+  FutureOr<void> performLogin() async {
     if (_formKey.currentState != null &&
         _formKey.currentState!.validate() &&
         checkData()) {

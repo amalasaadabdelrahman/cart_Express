@@ -6,7 +6,7 @@ class ApiSetting {
   static const LOGIN = _API_URL + 'login';
   static const LOGOUT = _API_URL + 'logout';
   static const REGISTER = _API_URL + 'signUp';
-  static const  category = _API_URL + 'category';
-  static const  allQ = _API_URL + 'allQ';
-
+  static const ALLQ = _API_URL + 'allQuestions';
+  static const FRUITS = _API_URL + 'getProductsByCategoryId/1';
+  static const VEGETABELS = _API_URL + 'getProductsByCategoryId/2';
 }

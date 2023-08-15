@@ -1,12 +1,11 @@
-
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../api_settings.dart';
-import '../models/allQ.dart';
+import '../../models/allQ.dart';
 
 class AllQController {
   Future<List<Questions>> getallQ() async {
-    Uri uri = Uri.parse(ApiSetting.allQ);
+    Uri uri = Uri.parse(ApiSetting.ALLQ);
     var response = await http.get(uri);
 
     if (response.statusCode == 200) {

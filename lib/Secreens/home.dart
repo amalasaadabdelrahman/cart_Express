@@ -18,6 +18,7 @@ import 'profile.dart';
 import '../api/controller/user_api_controller.dart';
 import '../constants/const.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:async';
 
 class Home extends StatefulWidget {
   // ButtomNavigationBar({});
@@ -335,7 +336,7 @@ class _HomeState extends State<Home> with Helpers {
         ));
   }
 
-  Future<void> logout() async {
+  FutureOr<void> logout() async {
     bool status = await UserApiController().logout();
     if (status) {
       showSnackBar(

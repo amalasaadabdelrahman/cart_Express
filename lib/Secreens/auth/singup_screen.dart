@@ -9,6 +9,7 @@ import '../../component/custom_button.dart';
 
 import '../category.dart';
 import '../welcome.dart';
+import 'dart:async';
 
 class SingUpScreen extends StatefulWidget {
   const SingUpScreen({Key? key}) : super(key: key);
@@ -249,7 +250,7 @@ class _SingUpScreenState extends State<SingUpScreen> with Helpers {
     return false;
   }
 
-  Future<void> register() async {
+  FutureOr<void> register() async {
     bool status = await UserApiController().register(
       email: emailController.text,
       password: passwordController.text,
@@ -270,7 +271,7 @@ class _SingUpScreenState extends State<SingUpScreen> with Helpers {
     }
   }
 
-  Future<void> performRegister() async {
+  FutureOr<void> performRegister() async {
     if (_formKey.currentState != null &&
         _formKey.currentState!.validate() &&
         checkData() &&

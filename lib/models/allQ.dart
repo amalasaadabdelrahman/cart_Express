@@ -1,5 +1,4 @@
-
-import '../../models/translations.dart';
+import 'translations.dart';
 
 class Questions {
   late int id;
@@ -21,8 +20,8 @@ class Questions {
         translations!.add(Translations.fromJson(v));
       });
     }
-  }}
-
+  }
+}
 
 class Translations {
   late int id;
@@ -34,17 +33,14 @@ class Translations {
   late String updatedAt;
   late Null deletedAt;
 
-
   Translations.fromJson(Map<String, dynamic> json) {
-  id = json['id'];
-  questionId = json['question_id'];
-  locale = json['locale'];
-  question = json['question'];
-  answer = json['answer'];
-  createdAt = json['created_at'];
-  updatedAt = json['updated_at'];
-  deletedAt = json['deleted_at'];
+    id = json['id'];
+    questionId = json['question_id'];
+    locale = json['locale'];
+    question = json['question'];
+    answer = json['answer'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    deletedAt = json['deleted_at'];
   }
-
-
-  }
+}

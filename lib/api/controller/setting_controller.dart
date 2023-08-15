@@ -3,6 +3,7 @@ import 'dart:convert';
 import '../../models/setting.dart';
 import '../api_settings.dart';
 import 'package:http/http.dart' as http;
+import 'dart:async';
 
 class ApiSettingController {
   Future<Settings> getSetting() async {

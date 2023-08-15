@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import '../../models/user.dart';
 import '../../prefs/user_preferences_controller.dart';
 import '../api_settings.dart';
+import 'dart:async';
 
 class UserApiController with Helpers {
   Future<bool> login(
