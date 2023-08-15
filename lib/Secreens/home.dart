@@ -30,7 +30,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with Helpers {
   int _selectedIndex = index;
   final List<Widget> _pages = [
-    category(),
+    Category(),
     Profile(),
     Offers(),
     Cart(),

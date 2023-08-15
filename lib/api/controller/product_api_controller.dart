@@ -14,5 +14,6 @@ class ProductApiController {
       BaseProduct baseProduct = BaseProduct.fromJson(jsonDecode(response.body));
       return baseProduct.products;
     }
+    return [];
   }
 }
