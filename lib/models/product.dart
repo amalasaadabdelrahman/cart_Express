@@ -13,7 +13,7 @@ class Products {
   String? createdAt;
   int? isCart;
   String? availableOffer;
-  int? priceOffer;
+  double? priceOffer;
   String? typeName;
   int? availableInt;
   String? name;

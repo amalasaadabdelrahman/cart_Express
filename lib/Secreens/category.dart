@@ -171,7 +171,7 @@ class _CategoryState extends State<Category> {
                                         Container(
                                           child: Image(
                                             image: NetworkImage(
-                                              '${category![index].image}',
+                                              '${category[index].image}',
                                             ),
                                             loadingBuilder: (context, child,
                                                 loadingProgress) {
@@ -227,110 +227,114 @@ class _CategoryState extends State<Category> {
                                   color: Color(0XFF1ABCBC),
                                 ),
                               );
+                            } else if (snapshot.hasError) {
+                              Center(
+                                child: Text('${snapshot.error}'),
+                              );
                             } else if (snapshot.hasData &&
                                 snapshot.data!.isNotEmpty) {
+                              print(snapshot.error);
                               fruit = snapshot.data!;
                               return Container(
-                                  width: double.infinity.w,
-                                  margin: const EdgeInsets.only(top: 25),
-                                  decoration: const BoxDecoration(
-                                    color: Colors.transparent,
+                                width: double.infinity.w,
+                                margin: const EdgeInsets.only(top: 25),
+                                decoration: const BoxDecoration(
+                                  color: Colors.transparent,
+                                ),
+                                child: GridView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: fruit.length,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    childAspectRatio: 160 / 200,
                                   ),
-                                  child: GridView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: fruit.length,
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      childAspectRatio: 160 / 200,
-                                    ),
-                                    itemBuilder: (context, index) {
-                                      return Container(
-                                        margin: const EdgeInsets.all(5),
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.only(
-                                            topRight: Radius.circular(15),
-                                            bottomLeft: Radius.circular(15),
-                                            bottomRight: Radius.circular(15),
+                                  itemBuilder: (context, index) {
+                                    return Container(
+                                      margin: const EdgeInsets.all(5),
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(15),
+                                          bottomLeft: Radius.circular(15),
+                                          bottomRight: Radius.circular(15),
+                                        ),
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Image(
+                                              image: NetworkImage(
+                                                  '${fruit[index].image}'),
+                                              loadingBuilder: (context, child,
+                                                  loadingProgress) {
+                                                if (loadingProgress == null) {
+                                                  return child;
+                                                }
+                                                return const CircularProgressIndicator(
+                                                  color: Color(0XFF1ABCBC),
+                                                );
+                                              },
+                                            ),
                                           ),
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Expanded(
-                                              child: Image(
-                                                image: NetworkImage(
-                                                    '${fruit![index].image}'),
-                                                loadingBuilder: (context, child,
-                                                    loadingProgress) {
-                                                  if (loadingProgress == null) {
-                                                    return child;
-                                                  }
-                                                  return const CircularProgressIndicator(
-                                                    color: Color(0XFF1ABCBC),
-                                                  );
-                                                },
+                                          Text(
+                                            '${fruit[index].name}',
+                                            style: TextStyle(
+                                                fontSize: 13.sp,
+                                                color: Colors.grey),
+                                          ),
+                                          Text(
+                                            '${fruit[index].price} \$ /K',
+                                            style: const TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w700,
+                                                color: Color(0XFF1ABCBC)),
+                                          ),
+                                          Container(
+                                            clipBehavior: Clip.antiAlias,
+                                            width: 150.w,
+                                            height: 40.h,
+                                            margin: const EdgeInsets.only(
+                                              top: 40,
+                                            ),
+                                            decoration: const BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadiusDirectional.only(
+                                                topEnd: Radius.circular(11),
+                                                bottomStart:
+                                                    Radius.circular(11),
                                               ),
                                             ),
-                                            Text(
-                                              '${fruit![index].name}',
-                                              style: TextStyle(
-                                                  fontSize: 13.sp,
-                                                  color: Colors.grey),
+                                            child: ElevatedButton(
+                                              style: ButtonStyle(
+                                                backgroundColor:
+                                                    MaterialStateColor
+                                                        .resolveWith(
+                                                  (states) =>
+                                                      const Color(0XFF1ABCBC),
+                                                ),
+                                              ),
+                                              child: const Text(
+                                                'Add to cart',
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  count += 1;
+                                                });
+                                              },
                                             ),
-                                            Text(
-                                              '${fruit![index].price} \$ /K',
-                                              style: const TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Color(0XFF1ABCBC)),
-                                            ),
-                                            Container(
-                                              clipBehavior: Clip.antiAlias,
-                                              width: 150.w,
-                                              height: 40.h,
-                                              margin: const EdgeInsets.only(
-                                                top: 40,
-                                              ),
-                                              decoration: const BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadiusDirectional
-                                                        .only(
-                                                  topEnd: Radius.circular(11),
-                                                  bottomStart:
-                                                      Radius.circular(11),
-                                                ),
-                                              ),
-                                              child: ElevatedButton(
-                                                style: ButtonStyle(
-                                                  backgroundColor:
-                                                      MaterialStateColor
-                                                          .resolveWith(
-                                                    (states) =>
-                                                        const Color(0XFF1ABCBC),
-                                                  ),
-                                                ),
-                                                child: const Text(
-                                                  'Add to cart',
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    count += 1;
-                                                  });
-                                                },
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  ));
+                                          )
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              );
                             } else {
                               return const Center(
                                 child: Text(
@@ -338,6 +342,11 @@ class _CategoryState extends State<Category> {
                                 ),
                               );
                             }
+                            return const Center(
+                              child: Text(
+                                'No Data',
+                              ),
+                            );
                           },
                           future: _fruit,
                         )
