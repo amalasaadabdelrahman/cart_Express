@@ -9,4 +9,9 @@ class ApiSetting {
   static const ALLQ = _API_URL + 'allQuestions';
   static const FRUITS = _API_URL + 'getProductsByCategoryId/1';
   static const VEGETABELS = _API_URL + 'getProductsByCategoryId/2';
+  static const LEAVES = _API_URL + 'getProductsByCategoryId/3';
+  static const CHICKENS = _API_URL + 'getProductsByCategoryId/4';
+  static const MEAT = _API_URL + 'getProductsByCategoryId/5';
+  static const BAKERY = _API_URL + 'getProductsByCategoryId/6';
+  static const OFFERS = _API_URL + 'getOffers';
 }

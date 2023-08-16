@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
+import '../api/api_settings.dart';
 import '../models/user.dart';
+import 'package:http/http.dart' as http;
 
 class UserPrefererencesController {
   static final UserPrefererencesController _instance =

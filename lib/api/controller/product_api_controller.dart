@@ -16,4 +16,54 @@ class ProductApiController {
     }
     return [];
   }
+
+  Future<List<Products>?> getVegetables() async {
+    var url = Uri.parse(ApiSetting.VEGETABELS);
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      BaseProduct baseProduct = BaseProduct.fromJson(jsonDecode(response.body));
+      return baseProduct.products;
+    }
+    return [];
+  }
+
+  Future<List<Products>?> getLeaves() async {
+    var url = Uri.parse(ApiSetting.LEAVES);
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      BaseProduct baseProduct = BaseProduct.fromJson(jsonDecode(response.body));
+      return baseProduct.products;
+    }
+    return [];
+  }
+
+  Future<List<Products>?> getChichens() async {
+    var url = Uri.parse(ApiSetting.CHICKENS);
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      BaseProduct baseProduct = BaseProduct.fromJson(jsonDecode(response.body));
+      return baseProduct.products;
+    }
+    return [];
+  }
+
+  Future<List<Products>?> getMeat() async {
+    var url = Uri.parse(ApiSetting.MEAT);
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      BaseProduct baseProduct = BaseProduct.fromJson(jsonDecode(response.body));
+      return baseProduct.products;
+    }
+    return [];
+  }
+
+  Future<List<Products>?> getBakery() async {
+    var url = Uri.parse(ApiSetting.BAKERY);
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      BaseProduct baseProduct = BaseProduct.fromJson(jsonDecode(response.body));
+      return baseProduct.products;
+    }
+    return [];
+  }
 }

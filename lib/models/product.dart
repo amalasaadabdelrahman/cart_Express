@@ -1,7 +1,7 @@
 class Products {
   int? id;
   int? categoryId;
-  double? price;
+  dynamic? price;
   String? image;
   int? discount;
   String? offerFrom;
@@ -13,7 +13,7 @@ class Products {
   String? createdAt;
   int? isCart;
   String? availableOffer;
-  double? priceOffer;
+  dynamic? priceOffer;
   String? typeName;
   int? availableInt;
   String? name;

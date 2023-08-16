@@ -4,6 +4,7 @@ import 'package:cart_express/api/controller/product_api_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../component/custom_future_builder.dart';
 import '../models/category.dart';
 import '../models/product.dart';
 
@@ -17,8 +18,19 @@ class Category extends StatefulWidget {
 class _CategoryState extends State<Category> {
   late Future<List<Categories>?> _future;
   late Future<List<Products>?> _fruit;
+  late Future<List<Products>?> _vegetables;
+  late Future<List<Products>?> _leaves;
+  late Future<List<Products>?> _chickens;
+  late Future<List<Products>?> _meats;
+  late Future<List<Products>?> _bakery;
   List<Categories> category = [];
   List<Products> fruit = [];
+  List<Products> vegetable = [];
+  List<Products> leave = [];
+  List<Products> chicken = [];
+  List<Products> meat = [];
+  List<Products> bakery = [];
+
   List<IconData> icons = [
     Icons.home,
     Icons.person,
@@ -49,7 +61,11 @@ class _CategoryState extends State<Category> {
     super.initState();
     _future = CategoryApiController().getCategory();
     _fruit = ProductApiController().getFruits();
-    print(fruit);
+    _vegetables = ProductApiController().getVegetables();
+    _leaves = ProductApiController().getLeaves();
+    _chickens = ProductApiController().getChichens();
+    _meats = ProductApiController().getMeat();
+    _bakery = ProductApiController().getBakery();
   }
 
   @override
@@ -178,11 +194,14 @@ class _CategoryState extends State<Category> {
                                               if (loadingProgress == null) {
                                                 return child;
                                               }
-                                              return CircularProgressIndicator(
-                                                  color: current == index
-                                                      ? Colors.white
-                                                      : const Color(
-                                                          0XFF1ABCBC));
+                                              return Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                        color: current == index
+                                                            ? Colors.white
+                                                            : const Color(
+                                                                0XFF1ABCBC)),
+                                              );
                                             },
                                           ),
                                           padding:
@@ -194,7 +213,7 @@ class _CategoryState extends State<Category> {
                                           width: 10.w,
                                         ),
                                         Text(
-                                          '${category![index].name}',
+                                          '${category[index].name}',
                                           style: TextStyle(
                                             color: current == index
                                                 ? Colors.white
@@ -218,402 +237,26 @@ class _CategoryState extends State<Category> {
                     ),
                   ),
                   current == 0
-                      ? FutureBuilder<List<Products>?>(
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return const Center(
-                                child: CircularProgressIndicator(
-                                  color: Color(0XFF1ABCBC),
-                                ),
-                              );
-                            } else if (snapshot.hasError) {
-                              Center(
-                                child: Text('${snapshot.error}'),
-                              );
-                            } else if (snapshot.hasData &&
-                                snapshot.data!.isNotEmpty) {
-                              print(snapshot.error);
-                              fruit = snapshot.data!;
-                              return Container(
-                                width: double.infinity.w,
-                                margin: const EdgeInsets.only(top: 25),
-                                decoration: const BoxDecoration(
-                                  color: Colors.transparent,
-                                ),
-                                child: GridView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: fruit.length,
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    childAspectRatio: 160 / 200,
-                                  ),
-                                  itemBuilder: (context, index) {
-                                    return Container(
-                                      margin: const EdgeInsets.all(5),
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(15),
-                                          bottomLeft: Radius.circular(15),
-                                          bottomRight: Radius.circular(15),
-                                        ),
-                                      ),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: Image(
-                                              image: NetworkImage(
-                                                  '${fruit[index].image}'),
-                                              loadingBuilder: (context, child,
-                                                  loadingProgress) {
-                                                if (loadingProgress == null) {
-                                                  return child;
-                                                }
-                                                return const CircularProgressIndicator(
-                                                  color: Color(0XFF1ABCBC),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                          Text(
-                                            '${fruit[index].name}',
-                                            style: TextStyle(
-                                                fontSize: 13.sp,
-                                                color: Colors.grey),
-                                          ),
-                                          Text(
-                                            '${fruit[index].price} \$ /K',
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w700,
-                                                color: Color(0XFF1ABCBC)),
-                                          ),
-                                          Container(
-                                            clipBehavior: Clip.antiAlias,
-                                            width: 150.w,
-                                            height: 40.h,
-                                            margin: const EdgeInsets.only(
-                                              top: 40,
-                                            ),
-                                            decoration: const BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadiusDirectional.only(
-                                                topEnd: Radius.circular(11),
-                                                bottomStart:
-                                                    Radius.circular(11),
-                                              ),
-                                            ),
-                                            child: ElevatedButton(
-                                              style: ButtonStyle(
-                                                backgroundColor:
-                                                    MaterialStateColor
-                                                        .resolveWith(
-                                                  (states) =>
-                                                      const Color(0XFF1ABCBC),
-                                                ),
-                                              ),
-                                              child: const Text(
-                                                'Add to cart',
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                              onPressed: () {
-                                                setState(() {
-                                                  count += 1;
-                                                });
-                                              },
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            } else {
-                              return const Center(
-                                child: Text(
-                                  'No Data',
-                                ),
-                              );
-                            }
-                            return const Center(
-                              child: Text(
-                                'No Data',
-                              ),
-                            );
-                          },
+                      ? CustomFutureBuilder(
+                          list: fruit,
                           future: _fruit,
                         )
                       : const SizedBox(),
                   current == 1
-                      ? Expanded(
-                          child: Container(
-                            width: double.infinity.w,
-                            margin: const EdgeInsets.only(top: 25),
-                            decoration: const BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: GridView.builder(
-                              itemCount: 6,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 160.h / 200.w,
-                              ),
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  margin: const EdgeInsets.all(5),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      bottomLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                          child: Image(image: images[index])),
-                                      Text(
-                                        fruits[index],
-                                        style: TextStyle(
-                                            fontSize: 13.sp,
-                                            color: Colors.grey),
-                                      ),
-                                      Text(
-                                        '5.00 \$ /K',
-                                        style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0XFF1ABCBC)),
-                                      ),
-                                      Container(
-                                        clipBehavior: Clip.antiAlias,
-                                        width: 150.w,
-                                        height: 40.h,
-                                        margin: const EdgeInsets.only(
-                                          top: 40,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          borderRadius:
-                                              BorderRadiusDirectional.only(
-                                            topEnd: Radius.circular(11),
-                                            bottomStart: Radius.circular(11),
-                                          ),
-                                        ),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateColor.resolveWith(
-                                              (states) =>
-                                                  const Color(0XFF1ABCBC),
-                                            ),
-                                          ),
-                                          child: const Text(
-                                            'Add to cart',
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              count += 1;
-                                            });
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        )
+                      ? CustomFutureBuilder(
+                          list: vegetable, future: _vegetables)
                       : const SizedBox(),
                   current == 2
-                      ? Expanded(
-                          child: Container(
-                            width: double.infinity.w,
-                            margin: const EdgeInsets.only(top: 25),
-                            decoration: const BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: GridView.builder(
-                              itemCount: 6,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 160.h / 200.w,
-                              ),
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  margin: const EdgeInsets.all(5),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      bottomLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                          child: Image(image: images[index])),
-                                      Text(
-                                        fruits[index],
-                                        style: TextStyle(
-                                            fontSize: 13.sp,
-                                            color: Colors.grey),
-                                      ),
-                                      Text(
-                                        '5.00 \$ /K',
-                                        style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0XFF1ABCBC)),
-                                      ),
-                                      Container(
-                                        clipBehavior: Clip.antiAlias,
-                                        width: 150.w,
-                                        height: 40.h,
-                                        margin: const EdgeInsets.only(
-                                          top: 40,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          borderRadius:
-                                              BorderRadiusDirectional.only(
-                                            topEnd: Radius.circular(11),
-                                            bottomStart: Radius.circular(11),
-                                          ),
-                                        ),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateColor.resolveWith(
-                                              (states) =>
-                                                  const Color(0XFF1ABCBC),
-                                            ),
-                                          ),
-                                          child: const Text(
-                                            'Add to cart',
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              count += 1;
-                                            });
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        )
+                      ? CustomFutureBuilder(list: leave, future: _leaves)
                       : const SizedBox(),
                   current == 3
-                      ? Expanded(
-                          child: Container(
-                            width: double.infinity.w,
-                            margin: const EdgeInsets.only(top: 25),
-                            decoration: const BoxDecoration(
-                              color: Colors.transparent,
-                            ),
-                            child: GridView.builder(
-                              itemCount: 6,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 160.h / 200.w,
-                              ),
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  margin: const EdgeInsets.all(5),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(15),
-                                      bottomLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                          child: Image(image: images[index])),
-                                      Text(
-                                        fruits[index],
-                                        style: TextStyle(
-                                            fontSize: 13.sp,
-                                            color: Colors.grey),
-                                      ),
-                                      Text(
-                                        '5.00 \$ /K',
-                                        style: TextStyle(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0XFF1ABCBC)),
-                                      ),
-                                      Container(
-                                        clipBehavior: Clip.antiAlias,
-                                        width: 150.w,
-                                        height: 40.h,
-                                        margin: const EdgeInsets.only(
-                                          top: 40,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          borderRadius:
-                                              BorderRadiusDirectional.only(
-                                            topEnd: Radius.circular(11),
-                                            bottomStart: Radius.circular(11),
-                                          ),
-                                        ),
-                                        child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateColor.resolveWith(
-                                              (states) =>
-                                                  const Color(0XFF1ABCBC),
-                                            ),
-                                          ),
-                                          child: const Text(
-                                            'Add to cart',
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              count += 1;
-                                            });
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        )
+                      ? CustomFutureBuilder(list: chicken, future: _chickens)
+                      : const SizedBox(),
+                  current == 4
+                      ? CustomFutureBuilder(list: meat, future: _meats)
+                      : const SizedBox(),
+                  current == 5
+                      ? CustomFutureBuilder(list: bakery, future: _bakery)
                       : const SizedBox(),
                 ],
               ),
