@@ -1,7 +1,6 @@
 import 'package:cart_express/Secreens/search.dart';
 import 'package:cart_express/api/controller/category_api_congtroller.dart';
 import 'package:cart_express/api/controller/product_api_controller.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../component/custom_future_builder.dart';
@@ -30,31 +29,13 @@ class _CategoryState extends State<Category> {
   List<Products> chicken = [];
   List<Products> meat = [];
   List<Products> bakery = [];
-
   List<IconData> icons = [
     Icons.home,
     Icons.person,
     Icons.local_offer_outlined,
     Icons.shopping_cart_outlined
   ];
-  List<AssetImage> images = [
-    const AssetImage('images/images/apple.png'),
-    const AssetImage('images/images/banana.png'),
-    const AssetImage('images/images/orange.png'),
-    const AssetImage('images/images/Cherry.png'),
-    const AssetImage('images/images/Cherry.png'),
-    const AssetImage('images/images/Cherry.png'),
-  ];
-  List<String> fruits = [
-    'Apple',
-    'Banana',
-    'Orange',
-    'Cherry',
-    'Cherry',
-    'Cherry',
-  ];
-  int current = 0;
-  int count = 0;
+  int currentIndex = 0;
   @override
   void initState() {
     // TODO: implement initState
@@ -159,11 +140,12 @@ class _CategoryState extends State<Category> {
                                 return GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      current = index;
+                                      currentIndex = index;
                                     });
                                   },
                                   child: AnimatedContainer(
-                                    width: current == index ? 150.w : 140.w,
+                                    width:
+                                        currentIndex == index ? 150.w : 140.w,
                                     height: 10.h,
                                     margin: const EdgeInsets.all(5),
                                     decoration: BoxDecoration(
@@ -176,7 +158,7 @@ class _CategoryState extends State<Category> {
                                               3), // changes position of shadow
                                         ),
                                       ],
-                                      color: current == index
+                                      color: currentIndex == index
                                           ? const Color(0xFF1ABCBC)
                                           : Colors.white,
                                       borderRadius: BorderRadius.circular(20),
@@ -197,7 +179,8 @@ class _CategoryState extends State<Category> {
                                               return Center(
                                                 child:
                                                     CircularProgressIndicator(
-                                                        color: current == index
+                                                        color: currentIndex ==
+                                                                index
                                                             ? Colors.white
                                                             : const Color(
                                                                 0XFF1ABCBC)),
@@ -215,7 +198,7 @@ class _CategoryState extends State<Category> {
                                         Text(
                                           '${category[index].name}',
                                           style: TextStyle(
-                                            color: current == index
+                                            color: currentIndex == index
                                                 ? Colors.white
                                                 : const Color(0xFF1ABCBC),
                                             fontSize: 15,
@@ -236,26 +219,26 @@ class _CategoryState extends State<Category> {
                       future: _future,
                     ),
                   ),
-                  current == 0
+                  currentIndex == 0
                       ? CustomFutureBuilder(
                           list: fruit,
                           future: _fruit,
                         )
                       : const SizedBox(),
-                  current == 1
+                  currentIndex == 1
                       ? CustomFutureBuilder(
                           list: vegetable, future: _vegetables)
                       : const SizedBox(),
-                  current == 2
+                  currentIndex == 2
                       ? CustomFutureBuilder(list: leave, future: _leaves)
                       : const SizedBox(),
-                  current == 3
+                  currentIndex == 3
                       ? CustomFutureBuilder(list: chicken, future: _chickens)
                       : const SizedBox(),
-                  current == 4
+                  currentIndex == 4
                       ? CustomFutureBuilder(list: meat, future: _meats)
                       : const SizedBox(),
-                  current == 5
+                  currentIndex == 5
                       ? CustomFutureBuilder(list: bakery, future: _bakery)
                       : const SizedBox(),
                 ],

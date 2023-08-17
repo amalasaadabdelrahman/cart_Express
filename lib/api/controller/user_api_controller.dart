@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cart_express/Secreens/utils/helpers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import '../../models/base_user.dart';
 import '../../models/user.dart';
 import '../../prefs/user_preferences_controller.dart';
 import '../api_settings.dart';
@@ -77,33 +78,14 @@ class UserApiController with Helpers {
         message == "The mobile has already been taken.") {
       showSnackBar(context: context, message: message, error: true);
     } else if (response.statusCode == 200) {
+      var jsonObject = jsonDecode(response.body);
+      User user = User.fromJson(jsonObject['user']);
+      UserPrefererencesController().saveUser(user: user);
       return true;
     } else {
       showSnackBar(
           context: context, message: 'Something went wrong', error: true);
     }
     return false;
-  }
-
-  Future<User?> getProfile() async {
-    // you want to get a Future<User>
-    var url = Uri.parse(ApiSetting.LOGIN);
-    final response = await http.get(url, headers: {
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ${UserPrefererencesController().token}'
-    });
-
-    print(response.statusCode);
-    if (response.statusCode == 200) {
-      if (response.body != "") {
-        var result =
-            json.decode(response.body)['user']; // select the data you need here
-        final user = User.fromJson(result); // create a new User instance
-        return user; // return it
-      }
-    }
-    // in case something went wrong you want to return null
-    // you can always check the nullity of your instance later in your code
-    return null;
   }
 }

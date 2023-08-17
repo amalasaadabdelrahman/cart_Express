@@ -211,7 +211,11 @@ class _LoginSecreenState extends State<LoginSecreen> with Helpers {
         message: 'Logged in successfully',
       );
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Home()));
+        context,
+        MaterialPageRoute(
+          builder: (context) => Home(),
+        ),
+      );
     } else {
       showSnackBar(
           context: context, message: 'Login failed ,try again', error: true);

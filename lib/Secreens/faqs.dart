@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../api/controller/allQ_controller.dart';
-import '../models/allQ.dart';
+import '../models/questions.dart';
 import '../constants/const.dart';
 import 'home.dart';
 
@@ -15,28 +15,15 @@ class FAQs extends StatefulWidget {
 }
 
 class _FAQsState extends State<FAQs> {
-  final List<Faq> _faqs = <Faq>[
-    Faq(
-        question: 'What is store ?',
-        answer:
-            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
-    Faq(
-        question: 'What is store ?',
-        answer:
-            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
-    Faq(
-        question: 'What is store ?',
-        answer:
-            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
-    Faq(
-        question: 'What is store ?',
-        answer:
-            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
-    Faq(
-        question: 'What is store ?',
-        answer:
-            'means the vehicle designated by Snap-on via the Operations Manual which is used as a mobile showroom and office and from where Products are sold.'),
-  ];
+  late Future<List<Questions>?> _future;
+  List<Questions> faqs = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _future = AllQApiController().AllQController();
+    print(faqs);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +37,7 @@ class _FAQsState extends State<FAQs> {
         backgroundColor: Color(0XFF1ABCBC),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
+            bottom: Radius.circular(25),
           ),
         ),
         centerTitle: true,
@@ -93,9 +80,9 @@ class _FAQsState extends State<FAQs> {
             expandedHeaderPadding: EdgeInsets.zero,
             dividerColor: Colors.grey,
             expansionCallback: (panelIndex, isExpanded) {
-              setState(() => _faqs[panelIndex].isExpanded = !isExpanded);
+              setState(() => faqs[panelIndex].isExpanded = !isExpanded);
             },
-            children: _faqs.map((Faq faq) {
+            children: faqs.map((dynamic faq) {
               return ExpansionPanel(
                 backgroundColor: Colors.white,
                 canTapOnHeader: true,
@@ -104,16 +91,17 @@ class _FAQsState extends State<FAQs> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 25),
-                    child: FutureBuilder<List<Questions>>(
-                      future: AllQController().getallQ(),
+                    child: FutureBuilder<List<Questions>?>(
+                      future: _future,
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return const CircularProgressIndicator();
                         } else if (snapshot.hasData &&
                             snapshot.data!.isNotEmpty) {
+                          faqs = snapshot.data!;
                           return Text(
-                            snapshot.data![index].question,
+                            '${faqs[index].question}',
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.normal,
@@ -134,18 +122,20 @@ class _FAQsState extends State<FAQs> {
                 },
                 body: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: FutureBuilder<List<Questions>>(
-                    future: AllQController()
-                        .getallQ(), // Replace with your API call for answers
+                  child: FutureBuilder<List<Questions>?>(
+                    future: _future, // Replace with your API call for answers
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const CircularProgressIndicator();
+                        return Center(
+                            child: const CircularProgressIndicator(
+                          color: Color(0XFF1ABCBC),
+                        ));
                       } else if (snapshot.hasData &&
                           snapshot.data!.isNotEmpty) {
                         return Align(
                           alignment: AlignmentDirectional.centerStart,
                           child: Text(
-                            snapshot.data![index].answer,
+                            '${faqs[index].answer}',
                             style: TextStyle(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.normal,

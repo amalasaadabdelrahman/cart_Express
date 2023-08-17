@@ -1,17 +1,18 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+
+import 'package:cart_express/models/base_allq.dart';
+import 'package:cart_express/models/questions.dart';
+
 import '../api_settings.dart';
-import '../../models/allQ.dart';
+import 'package:http/http.dart' as http;
 
-class AllQController {
-  Future<List<Questions>> getallQ() async {
-    Uri uri = Uri.parse(ApiSetting.ALLQ);
-    var response = await http.get(uri);
-
+class AllQApiController {
+  Future<List<Questions>?> AllQController() async {
+    var url = Uri.parse(ApiSetting.ALLQ);
+    var response = await http.get(url);
     if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body);
-      var data = jsonResponse['data'] as List;
-      return data.map((jsonObject) => Questions.fromJson(jsonObject)).toList();
+      BaseAllQ baseAllQ = BaseAllQ.fromJson(jsonDecode(response.body));
+      return baseAllQ.questions;
     }
     return [];
   }

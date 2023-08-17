@@ -12,20 +12,20 @@ class Settings {
   String? linkedIn;
   String? instagram;
   String? googlePlus;
-  int? minOrder;
+  dynamic minOrder;
   String? fromHour;
   String? toHour;
   int? enforceClose;
   String? latitude;
   String? longitude;
   String? image;
-  Null? createdAt;
+  String? createdAt;
   String? updatedAt;
   String? title;
-  Null? joinDescription;
+  String? joinDescription;
   String? description;
   String? address;
-  Null? keyWords;
+  String? keyWords;
 
   Settings(
       {this.id,

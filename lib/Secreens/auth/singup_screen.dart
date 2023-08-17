@@ -277,6 +277,11 @@ class _SingUpScreenState extends State<SingUpScreen> with Helpers {
         checkData() &&
         isChecked) {
       await register();
+    } else if (!isChecked) {
+      showSnackBar(
+          context: context,
+          message: 'You should agree of our Terms & Policy',
+          error: true);
     }
   }
 }
